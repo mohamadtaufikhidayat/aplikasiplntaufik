@@ -7,10 +7,12 @@ public class TagihanDto {
     private Long noTransaksi;
     private String idUser;
     private String idPenggunaListrik;
-    private Date tanggal;
+//    private Date tanggal;
+    private String bulan;
     private Long biaya;
     private Long kwh;
     private String status;
+    private String metodePembayaran;
 
     public Long getNoTagihan() {
         return noTagihan;
@@ -44,12 +46,21 @@ public class TagihanDto {
         this.idPenggunaListrik = idPenggunaListrik;
     }
 
-    public Date getTanggal() {
-        return tanggal;
+//    public Date getTanggal() {
+//        return tanggal;
+//    }
+//
+//    public void setTanggal(Date tanggal) {
+//        this.tanggal = tanggal;
+//    }
+
+
+    public String getBulan() {
+        return bulan;
     }
 
-    public void setTanggal(Date tanggal) {
-        this.tanggal = tanggal;
+    public void setBulan(String bulan) {
+        this.bulan = bulan;
     }
 
     public Long getBiaya() {
@@ -74,5 +85,13 @@ public class TagihanDto {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getMetodePembayaran() {
+        return metodePembayaran;
+    }
+
+    public void setMetodePembayaran(String metodePembayaran) {
+        this.metodePembayaran = metodePembayaran;
     }
 }

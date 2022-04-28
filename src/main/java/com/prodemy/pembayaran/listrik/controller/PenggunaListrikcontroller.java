@@ -42,7 +42,7 @@ public class PenggunaListrikcontroller {
         pel.setIdPengguna(dtoP.getIdPengguna());
         pel.setAlamat(dtoP.getAlamat());
         pel.setDaya(dtoP.getDaya());
-        pel.setGolonganDaya(dtoP.getGolonganDaya());
+        pel.setJenisPengguna(dtoP.getJenisPengguna());
 
         return pel;
     }
@@ -52,7 +52,7 @@ public class PenggunaListrikcontroller {
         dto.setIdPengguna(lis.getIdPengguna());
         dto.setAlamat(lis.getAlamat());
         dto.setDaya(lis.getDaya());
-        dto.setGolonganDaya(lis.getGolonganDaya());
+        dto.setJenisPengguna(lis.getJenisPengguna());
         return dto;
     }
 }

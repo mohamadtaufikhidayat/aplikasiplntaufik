@@ -4,7 +4,7 @@ public class PenggunaListrikDto {
     private String idPengguna;
     private String namaPengguna;
     private String alamat;
-    private String golonganDaya;
+    private String jenisPengguna;
 
     private Long daya;
 
@@ -32,12 +32,12 @@ public class PenggunaListrikDto {
         this.alamat = alamat;
     }
 
-    public String getGolonganDaya() {
-        return golonganDaya;
+    public String getJenisPengguna() {
+        return jenisPengguna;
     }
 
-    public void setGolonganDaya(String golonganDaya) {
-        this.golonganDaya = golonganDaya;
+    public void setJenisPengguna(String jenisPengguna) {
+        this.jenisPengguna = jenisPengguna;
     }
 
     public Long getDaya() {

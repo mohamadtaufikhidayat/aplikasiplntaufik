@@ -17,7 +17,7 @@ public class PenggunaListrik {
     @Column
     private String alamat;
     @Column
-    private String golonganDaya;
+    private String jenisPengguna;
     @Column
     private Long daya;
 
@@ -45,12 +45,12 @@ public class PenggunaListrik {
         this.alamat = alamat;
     }
 
-    public String getGolonganDaya() {
-        return golonganDaya;
+    public String getJenisPengguna() {
+        return jenisPengguna;
     }
 
-    public void setGolonganDaya(String golonganDaya) {
-        this.golonganDaya = golonganDaya;
+    public void setJenisPengguna(String jenisPengguna) {
+        this.jenisPengguna = jenisPengguna;
     }
 
     public Long getDaya() {
