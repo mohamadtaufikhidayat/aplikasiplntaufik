@@ -10,7 +10,7 @@ public class Tagihan {
 
     @Id
     @Column//pk
-    private Long noTagigan;
+    private Long noTagihan;
     @OneToOne//fk
     @JoinColumn(name="noTransaksi")
     private Transaksi noTransaksi;
@@ -32,12 +32,12 @@ public class Tagihan {
     @Column
     private String metodePembayaran;
 
-    public Long getNoTagigan() {
-        return noTagigan;
+    public Long getNoTagihan() {
+        return noTagihan;
     }
 
-    public void setNoTagigan(Long noTagigan) {
-        this.noTagigan = noTagigan;
+    public void setNoTagigan(Long noTagihan) {
+        this.noTagihan = noTagihan;
     }
 
     public Transaksi getNoTransaksi() {

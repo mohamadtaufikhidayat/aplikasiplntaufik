@@ -5,8 +5,8 @@ public class PenggunaListrikDto {
     private String namaPengguna;
     private String alamat;
     private String golonganDaya;
-    private Long kwh;
-    private Long biaya;
+
+    private Long daya;
 
     public String getIdPengguna() {
         return idPengguna;
@@ -40,19 +40,11 @@ public class PenggunaListrikDto {
         this.golonganDaya = golonganDaya;
     }
 
-    public Long getKwh() {
-        return kwh;
+    public Long getDaya() {
+        return daya;
     }
 
-    public void setKwh(Long kwh) {
-        this.kwh = kwh;
-    }
-
-    public Long getBiaya() {
-        return biaya;
-    }
-
-    public void setBiaya(Long biaya) {
-        this.biaya = biaya;
+    public void setDaya(Long daya) {
+        this.daya = daya;
     }
 }
