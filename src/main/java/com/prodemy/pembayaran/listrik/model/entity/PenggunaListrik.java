@@ -1,17 +1,28 @@
 package com.prodemy.pembayaran.listrik.model.entity;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="t_plistrik")
 public class PenggunaListrik {
     @Id
-    @Column
-    private String idPengguna;
+    @GeneratedValue(generator = "sequencepelangaan" )
+    @GenericGenerator(
+            name = "sequencepelanggan",strategy = "123",
+            parameters = {
+                    @org.hibernate.annotations.Parameter(name = "1",value = "1"),
+                    @org.hibernate.annotations.Parameter(name = "initial_value",value = "12031"),
+                    @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")
+            }
+    )
+    @Column(name = "id",unique = true)
+    private Long idPengguna;
     @Column
     private String namaPengguna;
     @Column
@@ -21,11 +32,14 @@ public class PenggunaListrik {
     @Column
     private Long daya;
 
-    public String getIdPengguna() {
+    @JsonIgnore
+    @ManyToMany(mappedBy = "daftarPengguna")
+    private Set<User> user = new HashSet<>();
+    public Long getIdPengguna() {
         return idPengguna;
     }
 
-    public void setIdPengguna(String idPengguna) {
+    public void setIdPengguna(Long idPengguna) {
         this.idPengguna = idPengguna;
     }
 
@@ -59,5 +73,9 @@ public class PenggunaListrik {
 
     public void setDaya(Long daya) {
         this.daya = daya;
+    }
+
+    public Set<User> getUser() {
+        return user;
     }
 }

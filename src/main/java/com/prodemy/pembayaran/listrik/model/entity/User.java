@@ -1,25 +1,49 @@
 package com.prodemy.pembayaran.listrik.model.entity;
 
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name="t_user")
-public class User {
+@Table(name="tbl_user")
+public class User  {
     @Id
-    @Column
-    private String idUser;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_user")
+    private Long noInduk;
     @Column
     private String password;
-    @Column(unique = true)
+    @Column
     private String email;
 
-    public String getIdUser() {
-        return idUser;
+    @Column(name = "no_pegawai")
+    private Long data;
+    @OneToOne
+    @JoinColumn(name = "no_peg")
+    private Admin pegawai;
+
+    @ManyToMany
+    @JoinTable(
+            name = "tb_user_peng",
+            joinColumns = @JoinColumn(name="id_Pelanggan"),
+            inverseJoinColumns = @JoinColumn(name = "id_idPengguna")
+    )
+    Set <PenggunaListrik> daftarPengguna = new HashSet<>();
+
+    public Long getNoInduk() {
+        return noInduk;
     }
 
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
+    public void setNoInduk(Long userid) {
+        this.noInduk = userid;
+    }
+
+    public void setDaftarPengguna(Set<PenggunaListrik> daftarPengguna) {
+        this.daftarPengguna = daftarPengguna;
     }
 
     public String getPassword() {
@@ -38,5 +62,24 @@ public class User {
         this.email = email;
     }
 
+    public Admin getPegawai() {
+        return pegawai;
+    }
 
+    public void setPegawai(Admin pegawai) {
+        this.pegawai = pegawai;
+    }
+
+    public Long getData() {
+        return data;
+    }
+
+    public void setData(Long data) {
+        this.data = data;
+    }
+
+    public Set<PenggunaListrik> getDaftarPengguna() {
+        return daftarPengguna;
+    }
 }
+

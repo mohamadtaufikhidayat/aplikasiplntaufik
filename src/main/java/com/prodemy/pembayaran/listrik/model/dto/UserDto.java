@@ -3,16 +3,17 @@ package com.prodemy.pembayaran.listrik.model.dto;
 
 
 public class UserDto {
-    private String idUser;
+    private Long id;
     private String password;
     private String email;
+    private Long  no_pegawai;
 
-    public String getIdUser() {
-        return idUser;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getPassword() {
@@ -30,4 +31,13 @@ public class UserDto {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public Long getNo_pegawai() {
+        return no_pegawai;
+    }
+
+    public void setNo_pegawai(Long no_pegawai) {
+        this.no_pegawai = no_pegawai;
+    }
+
 }
