@@ -9,6 +9,9 @@ public class FormPengaduan {
     @Id
     @Column
     private Long noPengaduan;
+    @ManyToOne
+    @JoinColumn(name="IdPenggunaListrik")
+    private PenggunaListrik IdpenggunaListrik;
     @Column
     private String alamat;
     @Column
@@ -18,9 +21,6 @@ public class FormPengaduan {
     //    @ManyToOne
 //    @JoinColumn(name="IdUser")
 //    private User Iduser;
-    @ManyToOne
-    @JoinColumn(name="IdPenggunaListrik")
-    private PenggunaListrik IdpenggunaListrik;
 
 //    @ManyToOne
 //    @JoinColumn(name="codeTopik")

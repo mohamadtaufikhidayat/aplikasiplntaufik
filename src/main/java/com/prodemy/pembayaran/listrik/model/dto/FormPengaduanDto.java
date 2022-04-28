@@ -8,7 +8,7 @@ public class FormPengaduanDto {
     private String deskripsi;
     private byte foto;
     private String IdpenggunaListrik;
-    private Long codeTopik;
+//    private Long codeTopik;
 
     public Long getNoPengaduan() {
         return noPengaduan;
@@ -42,19 +42,19 @@ public class FormPengaduanDto {
         this.foto = foto;
     }
 
-    public PenggunaListrik getIdpenggunaListrik() {
+    public String getIdpenggunaListrik() {
         return IdpenggunaListrik;
     }
 
-    public void setIdpenggunaListrik(PenggunaListrik idpenggunaListrik) {
+    public void setIdpenggunaListrik(String idpenggunaListrik) {
         IdpenggunaListrik = idpenggunaListrik;
     }
 
-    public Long getCodeTopik() {
-        return codeTopik;
-    }
-
-    public void setCodeTopik(Long codeTopik) {
-        this.codeTopik = codeTopik;
-    }
+//    public Long getCodeTopik() {
+//        return codeTopik;
+//    }
+//
+//    public void setCodeTopik(Long codeTopik) {
+//        this.codeTopik = codeTopik;
+//    }
 }
