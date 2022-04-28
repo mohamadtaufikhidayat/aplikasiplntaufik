@@ -21,9 +21,10 @@ public class FormPengaduan {
     @ManyToOne
     @JoinColumn(name="IdPenggunaListrik")
     private PenggunaListrik IdpenggunaListrik;
-    @ManyToOne
-    @JoinColumn(name="codeTopik")
-    private TopikPengaduan codeTopik;
+
+//    @ManyToOne
+//    @JoinColumn(name="codeTopik")
+//    private TopikPengaduan codeTopik;
 
     public Long getNoPengaduan() {
         return noPengaduan;
@@ -65,11 +66,12 @@ public class FormPengaduan {
         IdpenggunaListrik = idpenggunaListrik;
     }
 
-    public TopikPengaduan getCodeTopik() {
-        return codeTopik;
-    }
 
-    public void setCodeTopik(TopikPengaduan codeTopik) {
-        this.codeTopik = codeTopik;
-    }
+//    public TopikPengaduan getCodeTopik() {
+//        return codeTopik;
+//    }
+
+//    public void setCodeTopik(TopikPengaduan codeTopik) {
+//        this.codeTopik = codeTopik;
+//    }
 }
