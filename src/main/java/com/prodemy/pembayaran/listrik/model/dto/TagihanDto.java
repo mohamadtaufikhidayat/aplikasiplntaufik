@@ -4,13 +4,15 @@ import java.util.Date;
 
 public class TagihanDto {
     private Long noTagihan;
-    private Long noTransaksi;
+//    private Long noTransaksi;
     private String idUser;
-    private String idPenggunaListrik;
-    private Date tanggal;
+    private Long idPenggunaListrik;
+//    private Date tanggal;
+    private String bulan;
     private Long biaya;
     private Long kwh;
     private String status;
+    private String metodePembayaran;
 
     public Long getNoTagihan() {
         return noTagihan;
@@ -18,14 +20,6 @@ public class TagihanDto {
 
     public void setNoTagihan(Long noTagihan) {
         this.noTagihan = noTagihan;
-    }
-
-    public Long getNoTransaksi() {
-        return noTransaksi;
-    }
-
-    public void setNoTransaksi(Long noTransaksi) {
-        this.noTransaksi = noTransaksi;
     }
 
     public String getIdUser() {
@@ -36,20 +30,29 @@ public class TagihanDto {
         this.idUser = idUser;
     }
 
-    public String getIdPenggunaListrik() {
+    public Long getIdPenggunaListrik() {
         return idPenggunaListrik;
     }
 
-    public void setIdPenggunaListrik(String idPenggunaListrik) {
+    public void setIdPenggunaListrik(Long idPenggunaListrik) {
         this.idPenggunaListrik = idPenggunaListrik;
     }
 
-    public Date getTanggal() {
-        return tanggal;
+//    public Date getTanggal() {
+//        return tanggal;
+//    }
+//
+//    public void setTanggal(Date tanggal) {
+//        this.tanggal = tanggal;
+//    }
+
+
+    public String getBulan() {
+        return bulan;
     }
 
-    public void setTanggal(Date tanggal) {
-        this.tanggal = tanggal;
+    public void setBulan(String bulan) {
+        this.bulan = bulan;
     }
 
     public Long getBiaya() {
@@ -74,5 +77,13 @@ public class TagihanDto {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getMetodePembayaran() {
+        return metodePembayaran;
+    }
+
+    public void setMetodePembayaran(String metodePembayaran) {
+        this.metodePembayaran = metodePembayaran;
     }
 }

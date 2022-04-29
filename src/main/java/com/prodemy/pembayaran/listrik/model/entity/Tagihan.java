@@ -11,9 +11,9 @@ public class Tagihan {
     @Id
     @Column//pk
     private Long noTagihan;
-    @OneToOne//fk
-    @JoinColumn(name="noTransaksi")
-    private Transaksi noTransaksi;
+//    @OneToOne//fk
+//    @JoinColumn(name="noTransaksi")
+//    private Transaksi noTransaksi;
     @ManyToOne//fk
     @JoinColumn(name="IdUser")
     private User idUser;
@@ -22,7 +22,8 @@ public class Tagihan {
     private PenggunaListrik idPenggunaListrik;
 
     @Column
-    private Date tanggal;
+//    private Date tanggal;
+    private String bulan;
     @Column
     private Long biaya;
     @Column
@@ -36,16 +37,8 @@ public class Tagihan {
         return noTagihan;
     }
 
-    public void setNoTagigan(Long noTagihan) {
+    public void setNoTagihan(Long noTagihan) {
         this.noTagihan = noTagihan;
-    }
-
-    public Transaksi getNoTransaksi() {
-        return noTransaksi;
-    }
-
-    public void setNoTransaksi(Transaksi noTransaksi) {
-        this.noTransaksi = noTransaksi;
     }
 
     public User getIdUser() {
@@ -64,12 +57,21 @@ public class Tagihan {
         this.idPenggunaListrik = idPenggunaListrik;
     }
 
-    public Date getTanggal() {
-        return tanggal;
+//    public Date getTanggal() {
+//        return tanggal;
+//    }
+//
+//    public void setTanggal(Date tanggal) {
+//        this.tanggal = tanggal;
+//    }
+
+
+    public String getBulan() {
+        return bulan;
     }
 
-    public void setTanggal(Date tanggal) {
-        this.tanggal = tanggal;
+    public void setBulan(String bulan) {
+        this.bulan = bulan;
     }
 
     public long getBiaya() {

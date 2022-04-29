@@ -56,7 +56,7 @@ public class LoginController {
     private Login convertToEntity(UserDto dto) {
         Login log = new Login();
         log.setId(dto.getId());
-        log.setEmail(dto.getEmail());
+//        log.setEmail(dto.getEmail());
         log.setPassword(dto.getPassword());
         return log;
     }
