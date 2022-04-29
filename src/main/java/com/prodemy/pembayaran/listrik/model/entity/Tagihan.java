@@ -41,14 +41,6 @@ public class Tagihan {
         this.noTagihan = noTagihan;
     }
 
-//    public Transaksi getNoTransaksi() {
-//        return noTransaksi;
-//    }
-//
-//    public void setNoTransaksi(Transaksi noTransaksi) {
-//        this.noTransaksi = noTransaksi;
-//    }
-
     public User getIdUser() {
         return idUser;
     }

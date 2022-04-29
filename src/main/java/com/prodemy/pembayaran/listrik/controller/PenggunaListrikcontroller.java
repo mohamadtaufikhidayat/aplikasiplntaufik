@@ -1,14 +1,13 @@
 package com.prodemy.pembayaran.listrik.controller;
 
-import com.prodemy.pembayaran.listrik.Repository.PenggunaListrikrepo;
+import com.prodemy.pembayaran.listrik.Repository.Userrepo;
+import com.prodemy.pembayaran.listrik.Repository.dataPelRepo;
 import com.prodemy.pembayaran.listrik.model.dto.DefaultResponse;
 import com.prodemy.pembayaran.listrik.model.dto.PenggunaListrikDto;
 import com.prodemy.pembayaran.listrik.model.entity.PenggunaListrik;
+import com.prodemy.pembayaran.listrik.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 @RestController
@@ -16,7 +15,10 @@ import java.util.Optional;
 public class PenggunaListrikcontroller {
 
     @Autowired
-    PenggunaListrikrepo repo;
+    dataPelRepo repo;
+
+    @Autowired
+    Userrepo userrepo;
 
     @PostMapping("/registrasi")
     public DefaultResponse register(@RequestBody PenggunaListrikDto dto) {
@@ -55,4 +57,14 @@ public class PenggunaListrikcontroller {
         dto.setJenisPengguna(lis.getJenisPengguna());
         return dto;
     }
+    @PutMapping("/{userId}/daftar_pel/{pelangganId}")
+        User daftarPelangganUSer(@PathVariable Long userId, @PathVariable Long pelangganId){
+        User user = userrepo.findById(userId).get();
+        PenggunaListrik pelanggan = repo.findById(pelangganId).get();
+        user.getDaftarPengguna().add(pelanggan);
+        return userrepo.save(user);
+    }
+
 }
+
+

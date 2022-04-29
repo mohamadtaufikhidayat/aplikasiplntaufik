@@ -1,7 +1,8 @@
 package com.prodemy.pembayaran.listrik.controller;
 
-import com.prodemy.pembayaran.listrik.Repository.PenggunaListrikrepo;
+//import com.prodemy.pembayaran.listrik.Repository.PenggunaListrikrepo;
 import com.prodemy.pembayaran.listrik.Repository.Tagihanrepo;
+import com.prodemy.pembayaran.listrik.Repository.dataPelRepo;
 import com.prodemy.pembayaran.listrik.model.dto.DefaultResponse;
 import com.prodemy.pembayaran.listrik.model.dto.TagihanDto;
 import com.prodemy.pembayaran.listrik.model.entity.PenggunaListrik;
@@ -20,10 +21,10 @@ import java.util.stream.Collectors;
 public class Tagihancontroller {
     Logger logger = LoggerFactory.getLogger(Tagihancontroller.class);
     private final Tagihanrepo tagihanrepo;
-    private final PenggunaListrikrepo penggunaListrikrepo;
-    public Tagihancontroller(Tagihanrepo tagihanrepo, PenggunaListrikrepo penggunaListrikrepo) {
+    private final dataPelRepo datapelrepo;
+    public Tagihancontroller(Tagihanrepo tagihanrepo, dataPelRepo datapelrepo) {
         this.tagihanrepo = tagihanrepo;
-        this.penggunaListrikrepo = penggunaListrikrepo;
+        this.datapelrepo = datapelrepo;
     }
 
     @PostMapping("/savedata")
@@ -36,8 +37,8 @@ public class Tagihancontroller {
 
     private Tagihan convertDtoToEntity(TagihanDto dto) {
         Tagihan tgh = new Tagihan();
-        if(penggunaListrikrepo.findById(dto.getIdPenggunaListrik()).isPresent()){
-            PenggunaListrik penggunaListrik =  penggunaListrikrepo.findById(dto.getIdPenggunaListrik()).get();
+        if(datapelrepo.findById(dto.getIdPenggunaListrik()).isPresent()){
+            PenggunaListrik penggunaListrik =  datapelrepo.findById(dto.getIdPenggunaListrik()).get();
             tgh.setIdPenggunaListrik(penggunaListrik);
         }
         tgh.setNoTagihan(dto.getNoTagihan());
@@ -51,7 +52,7 @@ public class Tagihancontroller {
     }
 
     @GetMapping("/cek/{idPenggunaListrik}/{bulan}")
-    public DefaultResponse<TagihanDto> getByIdPenggunaListrikAndBulan(@PathVariable String idPenggunaListrik, @PathVariable String bulan) {
+    public DefaultResponse<TagihanDto> getByIdPenggunaListrikAndBulan(@PathVariable Long idPenggunaListrik, @PathVariable String bulan) {
         DefaultResponse<TagihanDto> response = new DefaultResponse<>();
         Optional<Tagihan> optional = tagihanrepo.findByIdPenggunaListrikIdPenggunaAndBulan(idPenggunaListrik, bulan);
         if(optional.isPresent()) {
@@ -76,7 +77,7 @@ public class Tagihancontroller {
     }
 
     @GetMapping("/history/{idPenggunaListrik}")
-    public List<TagihanDto> getHistoryByIdPenggunaListrik(@PathVariable String idPenggunaListrik){
+    public List<TagihanDto> getHistoryByIdPenggunaListrik(@PathVariable Long idPenggunaListrik){
         List<Tagihan> hist = tagihanrepo.findByIdPenggunaListrikIdPengguna(idPenggunaListrik);
         List<TagihanDto> histDto = hist.stream().map(this::convertEntityToDto).collect(Collectors.toList());
         return histDto;

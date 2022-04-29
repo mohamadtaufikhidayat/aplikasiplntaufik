@@ -6,7 +6,7 @@ public class TagihanDto {
     private Long noTagihan;
 //    private Long noTransaksi;
     private String idUser;
-    private String idPenggunaListrik;
+    private Long idPenggunaListrik;
 //    private Date tanggal;
     private String bulan;
     private Long biaya;
@@ -22,14 +22,6 @@ public class TagihanDto {
         this.noTagihan = noTagihan;
     }
 
-//    public Long getNoTransaksi() {
-//        return noTransaksi;
-//    }
-//
-//    public void setNoTransaksi(Long noTransaksi) {
-//        this.noTransaksi = noTransaksi;
-//    }
-
     public String getIdUser() {
         return idUser;
     }
@@ -38,11 +30,11 @@ public class TagihanDto {
         this.idUser = idUser;
     }
 
-    public String getIdPenggunaListrik() {
+    public Long getIdPenggunaListrik() {
         return idPenggunaListrik;
     }
 
-    public void setIdPenggunaListrik(String idPenggunaListrik) {
+    public void setIdPenggunaListrik(Long idPenggunaListrik) {
         this.idPenggunaListrik = idPenggunaListrik;
     }
 

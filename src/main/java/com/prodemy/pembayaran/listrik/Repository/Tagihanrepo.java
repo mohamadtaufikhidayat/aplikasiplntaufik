@@ -11,8 +11,8 @@ import java.util.Optional;
 
 @Repository
 public interface Tagihanrepo extends JpaRepository<Tagihan,Long> {
-    Optional<Tagihan> findByIdPenggunaListrikIdPenggunaAndBulan(String n, String k);
+    Optional<Tagihan> findByIdPenggunaListrikIdPenggunaAndBulan(Long n, String k);
 
-    List<Tagihan> findByIdPenggunaListrikIdPengguna(String idPengguna);
+    List<Tagihan> findByIdPenggunaListrikIdPengguna(Long idPengguna);
 
 }
