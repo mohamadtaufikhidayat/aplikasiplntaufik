@@ -9,8 +9,6 @@ import java.util.List;
 
 @Repository
 public interface PenggunaListrikrepo extends JpaRepository<PenggunaListrik,String> {
-    @Query(value="SELECT daya as daya, jenis_pengguna as jenis FROM t_plistrik WHERE id_pengguna = :id_pengguna" , nativeQuery=true)
-    TestProjection findJenisByIdPengguna(String id_pengguna);
 
-//    Ini dah bener, mungkin bisa tambahin daya pake projection tapi aku lupa code
+
 }

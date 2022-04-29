@@ -91,32 +91,32 @@ public class Tagihancontroller {
         return list;
     }
 
-    @PostMapping("/tgh")
-    public TagihanDto pTagihan(@RequestBody TagihanDto Tagpt){
-        Tagihan tghn = convertToEntity(Tagpt);
-        tagihanrepo.save(tghn);
-        return Tagpt;
-    }
+//    @PostMapping("/tgh")
+//    public TagihanDto pTagihan(@RequestBody TagihanDto Tagpt){
+//        Tagihan tghn = convertToEntity(Tagpt);
+//        tagihanrepo.save(tghn);
+//        return Tagpt;
+//    }
 
-    private Tagihan convertToEntity(TagihanDto pt) {
-        Tagihan tghn = new Tagihan();
-        if(penggunaListrikrepo.findById(pt.getIdPenggunaListrik()).isPresent()){
-            PenggunaListrik penggunaListrik =  penggunaListrikrepo.findById(pt.getIdPenggunaListrik()).get();
-            tghn.setIdPenggunaListrik(penggunaListrik);
-        }
-        tghn.setNoTagihan(pt.getNoTagihan());
-        tghn.setBulan(pt.getBulan());
-        tghn.setKwh((long) (Math.floor(Math.random() * 100) + 100));
-        Long bi = Long.valueOf(0);
-        if (penggunaListrikrepo.findJenisByIdPengguna(pt.getIdPenggunaListrik()).getJenis()=="RT1") {
-            bi = tghn.getKwh()*1352;
-        }
-        tghn.setBiaya(bi);
-        tghn.setMetodePembayaran(pt.getMetodePembayaran());
-        tghn.setStatus(pt.getStatus());
-
-        return tghn;
-    }
+//    private Tagihan convertToEntity(TagihanDto pt) {
+//        Tagihan tghn = new Tagihan();
+//        if(penggunaListrikrepo.findById(pt.getIdPenggunaListrik()).isPresent()){
+//            PenggunaListrik penggunaListrik =  penggunaListrikrepo.findById(pt.getIdPenggunaListrik()).get();
+//            tghn.setIdPenggunaListrik(penggunaListrik);
+//        }
+//        tghn.setNoTagihan(pt.getNoTagihan());
+//        tghn.setBulan(pt.getBulan());
+//        tghn.setKwh((long) (Math.floor(Math.random() * 100) + 100));
+//        Long bi = Long.valueOf(0);
+//        if (penggunaListrikrepo.findJenisByIdPengguna(pt.getIdPenggunaListrik()).getJenis()=="RT1") {
+//            bi = tghn.getKwh()*1352;
+//        }
+//        tghn.setBiaya(bi);
+//        tghn.setMetodePembayaran(pt.getMetodePembayaran());
+//        tghn.setStatus(pt.getStatus());
+//
+//        return tghn;
+//    }
 
 //    public void hitungBiaya() {
 //        TagihanDto tagihanDto = new TagihanDto();
