@@ -12,15 +12,6 @@ import java.util.Set;
 @Table(name="t_plistrik")
 public class PenggunaListrik {
     @Id
-    @GeneratedValue(generator = "sequencepelangaan" )
-    @GenericGenerator(
-            name = "sequencepelanggan",strategy = "123",
-            parameters = {
-                    @org.hibernate.annotations.Parameter(name = "1",value = "1"),
-                    @org.hibernate.annotations.Parameter(name = "initial_value",value = "12031"),
-                    @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")
-            }
-    )
     @Column(name = "id",unique = true)
     private Long idPengguna;
     @Column

@@ -21,9 +21,9 @@ public class UserService {
     private AdminRepo adm;
 
     public UserDto register (UserDto dto) {
-        User data = convertDTOtoEntity(dto);
-        repo.save(data);
-        return dto;
+      User data = convertDTOtoEntity(dto);
+      repo.save(data);
+      return (dto);
     }
     private UserDto convertToDto(User kota){
         UserDto kotaDto = new UserDto();
@@ -36,10 +36,11 @@ public class UserService {
         data.setNoInduk(dto.getId());
         data.setEmail(dto.getEmail());
         data.setPassword(dto.getPassword());
-        Optional<Admin> option = adm.findById(dto.getNo_pegawai());
-
+        Optional<Admin> option = adm.findByNo_aplikasi(dto.getNo_pegawai());
         if(option.isPresent()){
-            data.setData(dto.getNo_pegawai());
+        data.setData(dto.getNo_pegawai());
+        }else{
+            data.setData(null);
         }
         return data;
     }

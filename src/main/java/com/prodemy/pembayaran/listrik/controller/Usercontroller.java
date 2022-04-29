@@ -41,29 +41,7 @@ public class Usercontroller {
     }
 
 
-    @PostMapping("/login")
-    public DefaultResponse login (@RequestBody UserDto dto){
-        DefaultResponse<UserDto> respon= new DefaultResponse<>();
-        Optional<User> option = repo.findByEmail(dto.getEmail());
-        if (option.isEmpty()) {
-            respon.setPesan("Email Tidak Ada");
-        }else{
-            Optional<User> password = repo.findByPassword(dto.getEmail());
-            if(String.valueOf(password).equals(String.format("Optional[%s]",dto.getPassword()))){
-                respon.setData(dto);
-                Optional<User> role = repo.findByPegawai(dto.getEmail());
-                if(role.isPresent()){
-                    respon.setPesan("Login Berhasil,ADMIN");
-                }else{
-                    respon.setPesan("Login Berhasil,USER");
-                }
-            }else{
-                respon.setPesan("Password Salah");
 
-            }
-        }
-        return respon;
-    }
     @GetMapping
     public List<UserDto> get() {
         List<User> kotaList = repo.findAll();

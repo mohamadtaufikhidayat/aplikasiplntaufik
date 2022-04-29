@@ -5,6 +5,8 @@ public class AdminDto {
 
     private String nama;
 
+    private Long no_aplikasi;
+
     public Long getId() {
         return id;
     }
@@ -19,5 +21,13 @@ public class AdminDto {
 
     public void setNama(String nama) {
         this.nama = nama;
+    }
+
+    public Long getNo_aplikasi() {
+        return no_aplikasi;
+    }
+
+    public void setNo_aplikasi(Long no_aplikasi) {
+        this.no_aplikasi = no_aplikasi;
     }
 }

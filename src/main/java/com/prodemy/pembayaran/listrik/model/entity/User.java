@@ -12,7 +12,15 @@ import java.util.Set;
 @Table(name="tbl_user")
 public class User  {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "sequencepelangaan" )
+    @GenericGenerator(
+            name = "sequencepelanggan",strategy = "123",
+            parameters = {
+                    @org.hibernate.annotations.Parameter(name = "1",value = "1"),
+                    @org.hibernate.annotations.Parameter(name = "initial_value",value = "12031"),
+                    @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")
+            }
+    )
     @Column(name = "id_user")
     private Long noInduk;
     @Column
@@ -20,17 +28,17 @@ public class User  {
     @Column
     private String email;
 
-    @Column(name = "no_pegawai")
+    @Column(name = "no_pegawai",unique = true)
     private Long data;
+
     @OneToOne
     @JoinColumn(name = "no_peg")
     private Admin pegawai;
-
     @ManyToMany
     @JoinTable(
-            name = "tb_user_peng",
-            joinColumns = @JoinColumn(name="id_Pelanggan"),
-            inverseJoinColumns = @JoinColumn(name = "id_idPengguna")
+            name = "enroll",
+            joinColumns = @JoinColumn(name="id_pelanggan"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     Set <PenggunaListrik> daftarPengguna = new HashSet<>();
 
@@ -62,13 +70,6 @@ public class User  {
         this.email = email;
     }
 
-    public Admin getPegawai() {
-        return pegawai;
-    }
-
-    public void setPegawai(Admin pegawai) {
-        this.pegawai = pegawai;
-    }
 
     public Long getData() {
         return data;

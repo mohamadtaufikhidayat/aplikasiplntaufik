@@ -43,12 +43,14 @@ public class AdmControllers {
         Admin data = new Admin();
         data.setNama(dto.getNama());
         data.setId(dto.getId());
+        data.setNo_aplikasi(dto.getNo_aplikasi());
         return data;
     }
     public AdminDto convertEntitytoDTO(Admin data) {
         AdminDto dto = new AdminDto();
         dto.setNama(data.getNama());
         dto.setId(data.getId());
+        dto.setNo_aplikasi(data.getNo_aplikasi());
         return dto;
     }
 }
