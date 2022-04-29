@@ -8,7 +8,7 @@ import com.prodemy.pembayaran.listrik.model.entity.PenggunaListrik;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/form-pengaduam")
+@RequestMapping("/form-pengaduan")
 public class FormPengaduancontroller {
 
     private final PenggunaListrikrepo penggunaListrikrepo;
@@ -20,27 +20,24 @@ public class FormPengaduancontroller {
         this.penggunaListrikrepo = penggunaListrikrepo;
     }
 
-    @PostMapping("/isi-form")
-    public FormPengaduanDto postPengaduan(@RequestBody FormPengaduanDto formPengaduanDto){
-        FormPengaduan formPengaduan = convertDtoToEntity(formPengaduanDto);
-        formPengaduanrepo.save(formPengaduan);
-        return formPengaduanDto;
-    }
-
-
-    public FormPengaduan convertDtoToEntity(FormPengaduanDto pengaduanDto){
-        FormPengaduan entity = new FormPengaduan();
-        entity.setNoPengaduan(pengaduanDto.getNoPengaduan());
-//        entity.setIdpenggunaListrik(pengaduanDto.getIdpenggunaListrik());
-        entity.setDeskripsi(pengaduanDto.getDeskripsi());
-        return entity;
-    }
-    public FormPengaduanDto convertEntityToDto(FormPengaduan pengaduanEntity){
-        FormPengaduanDto dto = new FormPengaduanDto();
-//        dto.setIdpenggunaListrik(pengaduanEntity.getIdpenggunaListrik());
-        dto.setDeskripsi(pengaduanEntity.getDeskripsi());
+    @PostMapping("isi-form")
+    public FormPengaduanDto insert(@RequestBody FormPengaduanDto dto) {
+        FormPengaduan pengaduan = convertToEntity(dto);
+        formPengaduanrepo.save(pengaduan);
         return dto;
     }
 
+    private FormPengaduan convertToEntity(FormPengaduanDto dto){
+        FormPengaduan pengaduan = new FormPengaduan();
+        if(penggunaListrikrepo.findById(dto.getIdpenggunaListrik()).isPresent()){
+            PenggunaListrik penggunaListrik =  penggunaListrikrepo.findById(dto.getIdpenggunaListrik()).get();
+            pengaduan.setIdpenggunaListrik(penggunaListrik);
+        }
+        pengaduan.setNoPengaduan(dto.getNoPengaduan());
+        pengaduan.setDeskripsi(dto.getDeskripsi());
+        pengaduan.setAlamat(dto.getAlamat());
+        pengaduan.setFoto(dto.getFoto());
 
+        return pengaduan;
+    }
 }
