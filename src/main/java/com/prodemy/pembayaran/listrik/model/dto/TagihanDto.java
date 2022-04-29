@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class TagihanDto {
     private Long noTagihan;
-    private Long noTransaksi;
+//    private Long noTransaksi;
     private String idUser;
     private String idPenggunaListrik;
 //    private Date tanggal;
@@ -22,13 +22,13 @@ public class TagihanDto {
         this.noTagihan = noTagihan;
     }
 
-    public Long getNoTransaksi() {
-        return noTransaksi;
-    }
-
-    public void setNoTransaksi(Long noTransaksi) {
-        this.noTransaksi = noTransaksi;
-    }
+//    public Long getNoTransaksi() {
+//        return noTransaksi;
+//    }
+//
+//    public void setNoTransaksi(Long noTransaksi) {
+//        this.noTransaksi = noTransaksi;
+//    }
 
     public String getIdUser() {
         return idUser;

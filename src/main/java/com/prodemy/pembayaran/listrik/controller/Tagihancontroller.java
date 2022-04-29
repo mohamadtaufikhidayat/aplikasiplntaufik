@@ -8,11 +8,9 @@ import com.prodemy.pembayaran.listrik.model.entity.PenggunaListrik;
 import com.prodemy.pembayaran.listrik.model.entity.Tagihan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -55,7 +53,7 @@ public class Tagihancontroller {
     @GetMapping("/cek/{idPenggunaListrik}/{bulan}")
     public DefaultResponse<TagihanDto> getByIdPenggunaListrikAndBulan(@PathVariable String idPenggunaListrik, @PathVariable String bulan) {
         DefaultResponse<TagihanDto> response = new DefaultResponse<>();
-        Optional<Tagihan> optional = tagihanrepo.findByIdPenggunaListrikAndBulan(idPenggunaListrik, bulan);
+        Optional<Tagihan> optional = tagihanrepo.findByIdPenggunaListrikIdPenggunaAndBulan(idPenggunaListrik, bulan);
         if(optional.isPresent()) {
             response.setPesan("Tagihan bulan ini sudah terbayar");
             response.setData(convertEntityToDto(optional.get()));
@@ -79,7 +77,7 @@ public class Tagihancontroller {
 
     @GetMapping("/history/{idPenggunaListrik}")
     public List<TagihanDto> getHistoryByIdPenggunaListrik(@PathVariable String idPenggunaListrik){
-        List<Tagihan> hist = tagihanrepo.findByIdPenggunaListrik(idPenggunaListrik);
+        List<Tagihan> hist = tagihanrepo.findByIdPenggunaListrikIdPengguna(idPenggunaListrik);
         List<TagihanDto> histDto = hist.stream().map(this::convertEntityToDto).collect(Collectors.toList());
         return histDto;
     }
@@ -87,30 +85,57 @@ public class Tagihancontroller {
     @GetMapping("/alldata")
     public List<TagihanDto> getListTagihan(){
         List<TagihanDto> list = new ArrayList<>();
-//        logger.info(String.valueOf(Math.floor(Math.random() * 100) + 100));
-//        logger.info(String.valueOf(penggunaListrikrepo.findJenisByIdPengguna("1234").getJenis()));
-//        logger.info(String.valueOf(penggunaListrikrepo.findJenisByIdPengguna("1234").getDaya()));
         for(Tagihan m : tagihanrepo.findAll()) {
             list.add(convertEntityToDto(m));
         }
         return list;
     }
 
-    public void hitungBiaya() {
-        TagihanDto tagihanDto = new TagihanDto();
-        tagihanDto.setKwh((long) (Math.floor(Math.random() * 100) + 100));
-        if (penggunaListrikrepo.findJenisByIdPengguna(tagihanDto.getIdPenggunaListrik()).getJenis()=="RT1") {
-            tagihanDto.setBiaya(tagihanDto.getKwh()*1352);
+    @PostMapping("/tgh")
+    public TagihanDto pTagihan(@RequestBody TagihanDto Tagpt){
+        Tagihan tghn = convertToEntity(Tagpt);
+        tagihanrepo.save(tghn);
+        return Tagpt;
+    }
+
+    private Tagihan convertToEntity(TagihanDto pt) {
+        Tagihan tghn = new Tagihan();
+        if(penggunaListrikrepo.findById(pt.getIdPenggunaListrik()).isPresent()){
+            PenggunaListrik penggunaListrik =  penggunaListrikrepo.findById(pt.getIdPenggunaListrik()).get();
+            tghn.setIdPenggunaListrik(penggunaListrik);
         }
-        tagihanrepo.save(convertDtoToEntity(tagihanDto));
+        tghn.setNoTagihan(pt.getNoTagihan());
+        tghn.setBulan(pt.getBulan());
+        tghn.setKwh((long) (Math.floor(Math.random() * 100) + 100));
+        Long bi = Long.valueOf(0);
+        if (penggunaListrikrepo.findJenisByIdPengguna(pt.getIdPenggunaListrik()).getJenis()=="RT1") {
+            bi = tghn.getKwh()*1352;
+        }
+        tghn.setBiaya(bi);
+        tghn.setMetodePembayaran(pt.getMetodePembayaran());
+        tghn.setStatus(pt.getStatus());
+
+        return tghn;
     }
 
-    @GetMapping("/hitung")
-    public List<TagihanDto> getbiaya() {
-        List<TagihanDto> bi = new ArrayList<>();
-        bi.add(hitungBiaya());
-        return bi;
-    }
+//    public void hitungBiaya() {
+//        TagihanDto tagihanDto = new TagihanDto();
+//        tagihanDto.setKwh((long) (Math.floor(Math.random() * 100) + 100));
+//        if (penggunaListrikrepo.findJenisByIdPengguna(tagihanDto.getIdPenggunaListrik()).getJenis()=="RT1") {
+//            tagihanDto.setBiaya(tagihanDto.getKwh()*1352);
+//        }
+//        tagihanrepo.save(convertDtoToEntity(tagihanDto));
+//    }
+//
+//    @PostMapping("/hitung")
+//    public List<TagihanDto> getbiaya() {
+//        List<TagihanDto> bi = new ArrayList<>();
+//
+//        return bi;
+//    }
 
+    //        logger.info(String.valueOf(Math.floor(Math.random() * 100) + 100));
+//        logger.info(String.valueOf(penggunaListrikrepo.findJenisByIdPengguna("1234").getJenis()));
+//        logger.info(String.valueOf(penggunaListrikrepo.findJenisByIdPengguna("1234").getDaya()));
 
 }
