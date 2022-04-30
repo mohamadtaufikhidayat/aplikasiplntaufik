@@ -6,6 +6,7 @@ public class FormPengaduanDto {
     private String deskripsi;
     private byte foto;
     private Long IdpenggunaListrik;
+    private String status;
 
     public Long getNoPengaduan() {
         return noPengaduan;
@@ -47,4 +48,11 @@ public class FormPengaduanDto {
         IdpenggunaListrik = idpenggunaListrik;
     }
 
+    public String getStatus() {
+        return "Pengaduan telah dibuat";
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

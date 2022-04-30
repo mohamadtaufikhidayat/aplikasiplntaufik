@@ -23,7 +23,7 @@ public class FormPengaduan {
             name = "sequencepengaduan",
             strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
             parameters = {
-                    @org.hibernate.annotations.Parameter(name = "sequence_name", value = "user_sequence"),
+                    @org.hibernate.annotations.Parameter(name = "sequence_name", value = "complaint_sequence"),
                     @org.hibernate.annotations.Parameter(name = "initial_value", value = "1201"),
                     @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")
             }
@@ -38,13 +38,8 @@ public class FormPengaduan {
     private String deskripsi;
     @Column
     private byte foto;
-    //    @ManyToOne
-//    @JoinColumn(name="IdUser")
-//    private User Iduser;
-
-//    @ManyToOne
-//    @JoinColumn(name="codeTopik")
-//    private TopikPengaduan codeTopik;
+    @Column
+    private String status;
 
     public Long getNoPengaduan() {
         return noPengaduan;
@@ -86,12 +81,11 @@ public class FormPengaduan {
         IdpenggunaListrik = idpenggunaListrik;
     }
 
+    public String getStatus() {
+        return status;
+    }
 
-//    public TopikPengaduan getCodeTopik() {
-//        return codeTopik;
-//    }
-
-//    public void setCodeTopik(TopikPengaduan codeTopik) {
-//        this.codeTopik = codeTopik;
-//    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

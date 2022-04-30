@@ -2,7 +2,7 @@ package com.prodemy.pembayaran.listrik.controller;
 
 //import com.prodemy.pembayaran.listrik.Repository.PenggunaListrikrepo;
 import com.prodemy.pembayaran.listrik.Repository.Tagihanrepo;
-import com.prodemy.pembayaran.listrik.Repository.dataPelRepo;
+import com.prodemy.pembayaran.listrik.Repository.DataPelRepo;
 import com.prodemy.pembayaran.listrik.model.dto.DefaultResponse;
 import com.prodemy.pembayaran.listrik.model.dto.TagihanDto;
 import com.prodemy.pembayaran.listrik.model.entity.PenggunaListrik;
@@ -21,8 +21,8 @@ import java.util.stream.Collectors;
 public class Tagihancontroller {
     Logger logger = LoggerFactory.getLogger(Tagihancontroller.class);
     private final Tagihanrepo tagihanrepo;
-    private final dataPelRepo datapelrepo;
-    public Tagihancontroller(Tagihanrepo tagihanrepo, dataPelRepo datapelrepo) {
+    private final DataPelRepo datapelrepo;
+    public Tagihancontroller(Tagihanrepo tagihanrepo, DataPelRepo datapelrepo) {
         this.tagihanrepo = tagihanrepo;
         this.datapelrepo = datapelrepo;
     }

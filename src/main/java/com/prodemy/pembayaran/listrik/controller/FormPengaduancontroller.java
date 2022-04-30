@@ -36,7 +36,7 @@ public class FormPengaduancontroller {
         Optional<PenggunaListrik> optional = penggunaListrikrepo.findById(dto.getIdpenggunaListrik());
         if(optional.isPresent()){
             formPengaduanrepo.save(entity);
-            response.setPesan("Pengaduan berhasil dibuat");
+            response.setPesan("Pengaduan berhasil dibuat, Kami akan segera tindaklanjuti");
             response.setData(dto);
         } else{
             response.setPesan("Nomor Meteran Salah!");
@@ -54,6 +54,7 @@ public class FormPengaduancontroller {
         pengaduan.setDeskripsi(dto.getDeskripsi());
         pengaduan.setAlamat(dto.getAlamat());
         pengaduan.setFoto(dto.getFoto());
+        pengaduan.setStatus(dto.getStatus());
 
         return pengaduan;
     }
