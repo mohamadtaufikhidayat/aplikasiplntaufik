@@ -23,10 +23,13 @@ public class AdmControllers {
         DefaultResponse<AdminDto> data = new DefaultResponse<>();
         Optional<Admin> option = repo.findById(dto.getId());
         if(option.isPresent()){
+            Admin adm = repo.findByNo_aplikasi(dto.getId()).get();
             data.setPesan("Register Gagal Anda sudah terdaftar ");
+
         }else{
-            data.setData(dto);
             registrasi(dto);
+            Admin adm = repo.findByNo_aplikasi(dto.getId()).get();
+            data.setData(convertEntitytoDTO(adm));
             data.setPesan("Regitrasi Berhasil!!!");
         }
         return data;
@@ -36,7 +39,7 @@ public class AdmControllers {
     public AdminDto registrasi(AdminDto dto) {
         Admin data = convertDTOtoEntity(dto);
         repo.save(data);
-        return convertEntitytoDTO(data);
+        return dto;
 
     }
     public Admin convertDTOtoEntity(AdminDto dto) {

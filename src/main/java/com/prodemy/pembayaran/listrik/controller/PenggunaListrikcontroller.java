@@ -4,12 +4,16 @@ import com.prodemy.pembayaran.listrik.Repository.Userrepo;
 import com.prodemy.pembayaran.listrik.Repository.dataPelRepo;
 import com.prodemy.pembayaran.listrik.model.dto.DefaultResponse;
 import com.prodemy.pembayaran.listrik.model.dto.PenggunaListrikDto;
-import com.prodemy.pembayaran.listrik.model.entity.PenggunaListrik;
+import com.prodemy.pembayaran.listrik.model.dto.UserDto;
 import com.prodemy.pembayaran.listrik.model.entity.User;
+import com.prodemy.pembayaran.listrik.model.entity.PenggunaListrik;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("/home")
 public class PenggunaListrikcontroller {
@@ -46,6 +50,11 @@ public class PenggunaListrikcontroller {
         pel.setDaya(dtoP.getDaya());
         pel.setJenisPengguna(dtoP.getJenisPengguna());
 
+        if(userrepo.findById(dtoP.getUser_id()).isPresent()){
+            User user =  userrepo.findById(dtoP.getUser_id()).get();
+            pel.setUser(user);
+        }
+
         return pel;
     }
     public PenggunaListrikDto convertEntitytoDTO(PenggunaListrik lis) {
@@ -58,11 +67,17 @@ public class PenggunaListrikcontroller {
         return dto;
     }
     @PutMapping("/{userId}/daftar_pel/{pelangganId}")
-        User daftarPelangganUSer(@PathVariable Long userId, @PathVariable Long pelangganId){
+    User daftarPelangganUSer(@PathVariable Long userId, @PathVariable Long pelangganId){
         User user = userrepo.findById(userId).get();
         PenggunaListrik pelanggan = repo.findById(pelangganId).get();
-        user.getDaftarPengguna().add(pelanggan);
         return userrepo.save(user);
+    }
+    @GetMapping("/pengguna")
+    public List<PenggunaListrikDto> get() {
+        List<PenggunaListrik> kotaList = repo.findAll();
+        List<PenggunaListrikDto> kotaDtoList = kotaList.stream().map(this::convertEntitytoDTO)
+                .collect(Collectors.toList());
+        return kotaDtoList;
     }
 
 }

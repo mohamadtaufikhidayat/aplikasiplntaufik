@@ -1,18 +1,13 @@
 package com.prodemy.pembayaran.listrik.model.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name="t_plistrik")
 public class PenggunaListrik {
     @Id
-    @Column(name = "id",unique = true)
+    @Column(name = "id_peng",unique = true)
     private Long idPengguna;
     @Column
     private String namaPengguna;
@@ -23,9 +18,11 @@ public class PenggunaListrik {
     @Column
     private Long daya;
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "daftarPengguna")
-    private Set<User> user = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name="no_penggunaapp", nullable = false)
+    private User app;
+
+
     public Long getIdPengguna() {
         return idPengguna;
     }
@@ -66,7 +63,11 @@ public class PenggunaListrik {
         this.daya = daya;
     }
 
-    public Set<User> getUser() {
-        return user;
+    public User getUser() {
+        return app;
+    }
+
+    public void setUser(User app) {
+        this.app = app;
     }
 }

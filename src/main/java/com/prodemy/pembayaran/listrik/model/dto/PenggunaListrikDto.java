@@ -5,7 +5,7 @@ public class PenggunaListrikDto {
     private String namaPengguna;
     private String alamat;
     private String jenisPengguna;
-
+    private Long user_id;
     private Long daya;
 
     public Long getIdPengguna() {
@@ -46,5 +46,13 @@ public class PenggunaListrikDto {
 
     public void setDaya(Long daya) {
         this.daya = daya;
+    }
+
+    public Long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 }

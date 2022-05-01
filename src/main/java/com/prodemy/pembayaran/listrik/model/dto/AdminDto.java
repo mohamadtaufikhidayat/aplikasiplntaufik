@@ -1,6 +1,11 @@
 package com.prodemy.pembayaran.listrik.model.dto;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 public class AdminDto {
+
+
     private Long id;
 
     private String nama;

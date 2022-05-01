@@ -3,17 +3,15 @@ package com.prodemy.pembayaran.listrik.controller;
 import com.prodemy.pembayaran.listrik.Repository.LoginRepo;
 import com.prodemy.pembayaran.listrik.Repository.Userrepo;
 import com.prodemy.pembayaran.listrik.model.dto.DefaultResponse;
-import com.prodemy.pembayaran.listrik.model.dto.LoginDto;
 import com.prodemy.pembayaran.listrik.model.dto.UserDto;
-import com.prodemy.pembayaran.listrik.model.entity.Login;
 import com.prodemy.pembayaran.listrik.model.entity.User;
+import com.prodemy.pembayaran.listrik.model.entity.Login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 @RestController

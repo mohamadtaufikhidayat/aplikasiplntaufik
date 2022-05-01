@@ -1,5 +1,7 @@
 package com.prodemy.pembayaran.listrik.model.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,8 +12,8 @@ public class Admin {
 
     private String nama;
 
+    @Column(unique = true)
     private Long no_aplikasi;
-
     public Long getId() {
         return id;
     }

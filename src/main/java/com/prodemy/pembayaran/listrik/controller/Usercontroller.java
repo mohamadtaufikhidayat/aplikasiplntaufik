@@ -5,6 +5,7 @@ import com.prodemy.pembayaran.listrik.Repository.Userrepo;
 import com.prodemy.pembayaran.listrik.Service.UserService;
 import com.prodemy.pembayaran.listrik.model.dto.DefaultResponse;
 import com.prodemy.pembayaran.listrik.model.dto.UserDto;
+import com.prodemy.pembayaran.listrik.model.entity.Admin;
 import com.prodemy.pembayaran.listrik.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

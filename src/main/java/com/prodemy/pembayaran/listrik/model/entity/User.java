@@ -2,15 +2,12 @@ package com.prodemy.pembayaran.listrik.model.entity;
 
 
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
-@Table(name="tbl_user")
-public class User  {
+@Table(name="tb_app")
+public class User {
     @Id
     @GeneratedValue(generator = "sequencepelangaan" )
     @GenericGenerator(
@@ -21,7 +18,7 @@ public class User  {
                     @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")
             }
     )
-    @Column(name = "id_user")
+    @Column(name = "id_app")
     private Long noInduk;
     @Column
     private String password;
@@ -34,13 +31,6 @@ public class User  {
     @OneToOne
     @JoinColumn(name = "no_peg")
     private Admin pegawai;
-    @ManyToMany
-    @JoinTable(
-            name = "enroll",
-            joinColumns = @JoinColumn(name="id_pelanggan"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    Set <PenggunaListrik> daftarPengguna = new HashSet<>();
 
     public Long getNoInduk() {
         return noInduk;
@@ -48,10 +38,6 @@ public class User  {
 
     public void setNoInduk(Long userid) {
         this.noInduk = userid;
-    }
-
-    public void setDaftarPengguna(Set<PenggunaListrik> daftarPengguna) {
-        this.daftarPengguna = daftarPengguna;
     }
 
     public String getPassword() {
@@ -79,8 +65,6 @@ public class User  {
         this.data = data;
     }
 
-    public Set<PenggunaListrik> getDaftarPengguna() {
-        return daftarPengguna;
-    }
+
 }
 
