@@ -1,4 +1,8 @@
-package com.prodemy.pembayaran.listrik.model.entity;
-
-public class PetugasPengaduan {
-}
+//package com.prodemy.pembayaran.listrik.model.entity;
+//
+//import javax.persistence.Entity;
+//import javax.persistence.Table;
+//
+//
+//public class PetugasPengaduan {
+//}

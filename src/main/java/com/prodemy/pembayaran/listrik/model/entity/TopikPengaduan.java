@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class TopikPengaduan {
     @Id
     @Column
-    private Long codeTopik;
+    private String codeTopik;
     @Column
     private String kelompokTopik;
     @Column
@@ -24,11 +24,11 @@ public class TopikPengaduan {
         this.formPengaduan = formPengaduan;
     }
 
-    public Long getCodeTopik() {
+    public String getCodeTopik() {
         return codeTopik;
     }
 
-    public void setCodeTopik(Long codeTopik) {
+    public void setCodeTopik(String codeTopik) {
         this.codeTopik = codeTopik;
     }
 
