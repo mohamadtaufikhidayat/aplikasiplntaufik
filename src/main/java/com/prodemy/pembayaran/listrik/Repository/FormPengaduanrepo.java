@@ -13,17 +13,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface FormPengaduanrepo extends JpaRepository<FormPengaduan,Long> {
-
-//    @Query(value = "UPDATE FormPengaduan SET status = 'Sedang ditindak-lanjuti' WHERE noPengaduan = :noPengaduan", nativeQuery = false)
-//    FormPengaduan findByNoPengaduan (Long noPengaduan);
-
-
     @Modifying
     @Query("UPDATE FormPengaduan f SET f.status = 'Sedang ditindak-lanjuti' WHERE f.noPengaduan =:noPengaduan ")
     int updateStatus(Long noPengaduan);
     @Modifying
     @Query("UPDATE FormPengaduan f SET f.status = 'Pengaduan selesai, masalah telah diatasi' WHERE f.noPengaduan =:noPengaduan ")
     int updateStatus2(Long noPengaduan);
-
-
 }
