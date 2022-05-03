@@ -41,6 +41,7 @@ public class FormPengaduan {
     @Column
     private String status;
 
+
     public Long getNoPengaduan() {
         return noPengaduan;
     }
@@ -88,4 +89,5 @@ public class FormPengaduan {
     public void setStatus(String status) {
         this.status = status;
     }
+
 }

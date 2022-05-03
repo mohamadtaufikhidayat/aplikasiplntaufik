@@ -1,5 +1,7 @@
 package com.prodemy.pembayaran.listrik.model.dto;
 
+import com.prodemy.pembayaran.listrik.model.entity.FormPengaduan;
+
 public class FormPengaduanDto {
     private Long noPengaduan;
     private String alamat;
@@ -55,4 +57,5 @@ public class FormPengaduanDto {
     public void setStatus(String status) {
         this.status = status;
     }
+
 }

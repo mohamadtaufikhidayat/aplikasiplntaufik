@@ -22,21 +22,20 @@ public class TopikPengaduancontroller {
         this.topikPengaduanrepo = topikPengaduanrepo;
     }
 
-    @GetMapping("/list-topik-berdasarkan-kelompok/{kelompokTopik}")
-    public List<TopikPengaduanDto> getListTopikBerdasarkanKelompok(@PathVariable String kelompokTopik){
-        List<TopikPengaduanDto> list = new ArrayList<>();
-        for(TopikPengaduan x: topikPengaduanrepo.findAllByKelompokTopik(kelompokTopik)){
-            list.add(convertEntityToDto2(x));
-        }
-        return list;
-    }
-
     @GetMapping("/list-kelompok-topik")
     public List<TopikPengaduanDto> getListKelompokTopik2(){
 //        List<TopikPengaduan> list1 = topikPengaduanrepo.findByCodeTopik();
         List<TopikPengaduanDto> list = new ArrayList<>();
         for(TopikPengaduan x: topikPengaduanrepo.findByCodeTopik()){
             list.add(convertEntityToDto1(x));
+        }
+        return list;
+    }
+    @GetMapping("/list-topik-berdasarkan-kelompok/{kelompokTopik}")
+    public List<TopikPengaduanDto> getListTopikBerdasarkanKelompok(@PathVariable String kelompokTopik){
+        List<TopikPengaduanDto> list = new ArrayList<>();
+        for(TopikPengaduan x: topikPengaduanrepo.findAllByKelompokTopik(kelompokTopik)){
+            list.add(convertEntityToDto2(x));
         }
         return list;
     }
