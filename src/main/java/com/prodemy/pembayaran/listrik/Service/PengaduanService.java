@@ -15,4 +15,7 @@ public class PengaduanService {
     public int updateStatusComplaint(Long noPengaduan){
         return formPengaduanrepo.updateStatus(noPengaduan);
     }
+    public int updateStatusComplaint2(Long noPengaduan){
+        return formPengaduanrepo.updateStatus2(noPengaduan);
+    }
 }

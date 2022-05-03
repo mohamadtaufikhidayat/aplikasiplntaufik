@@ -43,6 +43,21 @@ public class PetugasPengaduancontroller {
         }
         return response;
     }
+    @PutMapping("/tindak-lanjut3/{noPengaduan}")
+    public DefaultResponse<FormPengaduanDto> update3 (@PathVariable Long noPengaduan){
+        DefaultResponse<FormPengaduanDto> response = new DefaultResponse<>();
+        FormPengaduan entity = new FormPengaduan();
+        FormPengaduanDto dto = convertToDto(entity);
+        Optional<FormPengaduan> optional = formPengaduanrepo.findById(noPengaduan);
+        if(optional.isPresent()){
+            pengaduanService.updateStatusComplaint2(noPengaduan);
+            response.setPesan("Status Berhasil Diperbarui");
+            response.setData(dto);
+        } else{
+            response.setPesan("Nomor Pengaduan Salah!");
+        }
+        return response;
+    }
 
     private FormPengaduan convertToEntity(FormPengaduanDto dto){
         FormPengaduan pengaduan = new FormPengaduan();
