@@ -8,6 +8,9 @@ import javax.persistence.*;
 public class Assignment {
     @Id
     @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long no;
+    @Column
     private Long idPetugas;
     @Column
     private String namaPetugas;
@@ -38,4 +41,6 @@ public class Assignment {
     public void setNoPengaduan(FormPengaduan noPengaduan) {
         this.noPengaduan = noPengaduan;
     }
+
+
 }

@@ -9,8 +9,11 @@ import javax.transaction.Transactional;
 @Service
 @Transactional
 public class PengaduanService {
-    @Autowired
-    private FormPengaduanrepo formPengaduanrepo;
+    private final FormPengaduanrepo formPengaduanrepo;
+
+    public PengaduanService(FormPengaduanrepo formPengaduanrepo) {
+        this.formPengaduanrepo = formPengaduanrepo;
+    }
 
     public int updateStatusComplaint(Long noPengaduan){
         return formPengaduanrepo.updateStatus(noPengaduan);

@@ -87,7 +87,7 @@ public class PetugasPengaduancontroller {
     public DefaultResponse<AssignmentDto> insertForm (@RequestBody AssignmentDto dto){
         DefaultResponse<AssignmentDto> response = new DefaultResponse<>();
         Assignment entity = convertToEntity(dto);
-        Optional<Assignment> optional = assignmentrepo.findById(dto.getIdPetugas());
+        Optional<Assignment> optional = assignmentrepo.findByIdPetugas(dto.getIdPetugas());
         Optional<FormPengaduan> optional1 = formPengaduanrepo.findById(dto.getNoPengaduan());
         if(optional.isPresent() && optional1.isPresent()){
             assignmentrepo.save(entity);
@@ -100,18 +100,10 @@ public class PetugasPengaduancontroller {
     }
     private Assignment convertToEntity(AssignmentDto dto){
         Assignment assignment = new Assignment();
-        if(assignmentrepo.findById(dto.getIdPetugas()).isPresent()){
-            Assignment assignment1 =  assignmentrepo.findById(dto.getIdPetugas()).get();
-        }
         if(formPengaduanrepo.findById(dto.getNoPengaduan()).isPresent()){
             FormPengaduan formPengaduan =  formPengaduanrepo.findById(dto.getNoPengaduan()).get();
             assignment.setNoPengaduan(formPengaduan);
         }
-
-//        if(assignmentrepo.findByNamaPetugas(dto.getNamaPetugas()).isPresent()){
-//            Assignment assignment2 =  assignmentrepo.findByNamaPetugas(dto.getNamaPetugas()).get();
-//            assignment.setNamaPetugas(String.valueOf(assignment2));
-//        }
         assignment.setIdPetugas(dto.getIdPetugas());
         assignment.setNamaPetugas(dto.getNamaPetugas());
 
