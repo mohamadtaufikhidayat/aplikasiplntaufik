@@ -1,7 +1,5 @@
 package com.prodemy.pembayaran.listrik.model.dto;
 
-import com.prodemy.pembayaran.listrik.model.entity.FormPengaduan;
-
 public class FormPengaduanDto {
     private Long noPengaduan;
     private String alamat;
@@ -9,6 +7,15 @@ public class FormPengaduanDto {
     private byte foto;
     private Long IdpenggunaListrik;
     private String status;
+    private String kodeTopik;
+
+    public String getKodeTopik() {
+        return kodeTopik;
+    }
+
+    public void setKodeTopik(String kodeTopik) {
+        this.kodeTopik = kodeTopik;
+    }
 
     public Long getNoPengaduan() {
         return noPengaduan;

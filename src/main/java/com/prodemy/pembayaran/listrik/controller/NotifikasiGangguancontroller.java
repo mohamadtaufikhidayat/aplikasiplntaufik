@@ -29,8 +29,10 @@ public class NotifikasiGangguancontroller {
         PenggunaListrikDto dto = convertToDto(entity);
         Optional<PenggunaListrik> optional = dataPelRepo.findAllByAlamat(alamat);
         if (optional.isPresent()){
-            response.setPesan("Ada gangguan");
+            response.setPesan("Ada gangguan listrik di daerah anda! Harap sabar menunngu, perbaikan akan segera dilakukan");
             response.setData(dto);
+        } else{
+            response.setPesan("Alamat salah! Silahkan masukkan Nama Kecamatan, Kota, dan Provinsi");
         }
         return response;
     }
@@ -40,8 +42,6 @@ public class NotifikasiGangguancontroller {
         dto.setIdPengguna(entity.getIdPengguna());
         dto.setNamaPengguna(entity.getNamaPengguna());
         dto.setAlamat(entity.getAlamat());
-//        dto.setJenisPengguna(entity.getJenisPengguna());
-//        dto.setDaya(entity.getDaya());
         return dto;
     }
 

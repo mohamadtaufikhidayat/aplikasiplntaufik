@@ -9,15 +9,6 @@ import javax.persistence.*;
 @Table(name="t_FormpPengaduan")
 public class FormPengaduan {
     @Id
-//    @GeneratedValue(generator = "sequencepengaduan" )
-//    @GenericGenerator(
-//            name = "sequencepengaduan",strategy = "123",
-//            parameters = {
-//                    @org.hibernate.annotations.Parameter(name = "1",value = "1"),
-//                    @org.hibernate.annotations.Parameter(name = "initial_value",value = "12031"),
-//                    @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")
-//            }
-//    )
     @GeneratedValue(generator = "sequencepengaduan")
     @GenericGenerator(
             name = "sequencepengaduan",
@@ -40,7 +31,17 @@ public class FormPengaduan {
     private byte foto;
     @Column
     private String status;
+    @ManyToOne
+    @JoinColumn(name = "KodeTopik")
+    private TopikPengaduan kodeTopik;
 
+    public TopikPengaduan getKodeTopik() {
+        return kodeTopik;
+    }
+
+    public void setKodeTopik(TopikPengaduan kodeTopik) {
+        this.kodeTopik = kodeTopik;
+    }
 
     public Long getNoPengaduan() {
         return noPengaduan;
