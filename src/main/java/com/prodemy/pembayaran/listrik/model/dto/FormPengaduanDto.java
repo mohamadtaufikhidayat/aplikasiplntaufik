@@ -58,11 +58,12 @@ public class FormPengaduanDto {
     }
 
     public String getStatus() {
-        return "Pengaduan telah dibuat";
+        return status;
     }
 
-    public void setStatus(String status) {
+    public String setStatus(String status) {
         this.status = status;
+        return status;
     }
 
 }

@@ -64,7 +64,7 @@ public class FormPengaduancontroller {
         pengaduan.setDeskripsi(dto.getDeskripsi());
         pengaduan.setAlamat(dto.getAlamat());
         pengaduan.setFoto(dto.getFoto());
-        pengaduan.setStatus(dto.getStatus());
+        pengaduan.setStatus(dto.setStatus("Pengaduan telah dibuat"));
 
         return pengaduan;
     }
