@@ -14,6 +14,8 @@ import com.prodemy.pembayaran.listrik.model.entity.TopikPengaduan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -36,20 +38,30 @@ public class PetugasPengaduancontroller {
     }
 
     @PutMapping("/tindak-lanjut2/{noPengaduan}")
-    public DefaultResponse<FormPengaduanDto> update2 (@PathVariable Long noPengaduan){
-        DefaultResponse<FormPengaduanDto> response = new DefaultResponse<>();
-        FormPengaduan entity = new FormPengaduan();
-        FormPengaduanDto dto = convertToDto(entity);
+    public DefaultResponse<FormPengaduan> update2 (@PathVariable Long noPengaduan){
+        DefaultResponse<FormPengaduan> response = new DefaultResponse<>();
+        FormPengaduanDto dto = new FormPengaduanDto();
+        FormPengaduan entity = convertDtoToEntity(dto);
         Optional<FormPengaduan> optional = formPengaduanrepo.findById(noPengaduan);
         if(optional.isPresent()){
             pengaduanService.updateStatusComplaint(noPengaduan);
             response.setPesan("Status Berhasil Diperbarui");
-            response.setData(dto);
+            response.setData(entity);
         } else{
             response.setPesan("Nomor Pengaduan Salah!");
         }
         return response;
     }
+
+    private FormPengaduan convertDtoToEntity(FormPengaduanDto dto) {
+        FormPengaduan entity = new FormPengaduan();
+        entity.setNoPengaduan(dto.getNoPengaduan());
+        entity.setAlamat(dto.getAlamat());
+        entity.setDeskripsi(dto.getDeskripsi());
+        entity.setStatus("Sedang ditindak-lanjuti");
+        return entity;
+    }
+
     @PutMapping("/tindak-lanjut3/{noPengaduan}")
     public DefaultResponse<FormPengaduanDto> update3 (@PathVariable Long noPengaduan){
         DefaultResponse<FormPengaduanDto> response = new DefaultResponse<>();

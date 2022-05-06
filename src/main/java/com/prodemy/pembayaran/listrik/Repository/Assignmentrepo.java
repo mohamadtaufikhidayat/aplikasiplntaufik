@@ -20,5 +20,4 @@ public interface Assignmentrepo extends JpaRepository<Assignment, Long> {
     @Query("select distinct a.idPetugas from Assignment a where a.idPetugas = :idPetugas ")
     Optional<Assignment> findByIdPetugas (@PathParam("idPetugas") Long idPetugas);
 
-    Optional<Assignment> findAllByIdPetugas(Long idPetugas);
 }
