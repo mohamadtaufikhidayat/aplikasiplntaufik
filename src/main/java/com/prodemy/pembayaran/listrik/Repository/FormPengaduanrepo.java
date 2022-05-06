@@ -19,4 +19,6 @@ public interface FormPengaduanrepo extends JpaRepository<FormPengaduan,Long> {
     @Modifying
     @Query("UPDATE FormPengaduan f SET f.status = 'Pengaduan selesai, masalah telah diatasi' WHERE f.noPengaduan =:noPengaduan ")
     int updateStatus2(Long noPengaduan);
+
+    List<FormPengaduan> findAllByNoPengaduan (Long noPengaduan);
 }

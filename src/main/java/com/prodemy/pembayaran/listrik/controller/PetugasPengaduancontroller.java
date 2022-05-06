@@ -37,18 +37,20 @@ public class PetugasPengaduancontroller {
         return pengaduanService.updateStatusComplaint(noPengaduan);
     }
 
-    @PutMapping("/tindak-lanjut2/{noPengaduan}")
-    public DefaultResponse<FormPengaduan> update2 (@PathVariable Long noPengaduan){
-        DefaultResponse<FormPengaduan> response = new DefaultResponse<>();
-        FormPengaduanDto dto = new FormPengaduanDto();
+    @PostMapping ("/tindak-lanjut2")
+    public DefaultResponse<FormPengaduan> update2 (@RequestBody FormPengaduanDto dto){
+        List<FormPengaduan> formPengaduanList = new ArrayList<>();
         FormPengaduan entity = convertDtoToEntity(dto);
-        Optional<FormPengaduan> optional = formPengaduanrepo.findById(noPengaduan);
-        if(optional.isPresent()){
-            pengaduanService.updateStatusComplaint(noPengaduan);
+        DefaultResponse<FormPengaduan> response = new DefaultResponse<>();
+        for(FormPengaduan m: formPengaduanrepo.findAllByNoPengaduan(dto.getNoPengaduan())){
+            formPengaduanList.add(m);
+        }
+        if(formPengaduanList.isEmpty()){
+            response.setPesan("Nomor Pengaduan Salah!");
+        } else{
+            pengaduanService.updateStatusComplaint(dto.getNoPengaduan());
             response.setPesan("Status Berhasil Diperbarui");
             response.setData(entity);
-        } else{
-            response.setPesan("Nomor Pengaduan Salah!");
         }
         return response;
     }
@@ -62,39 +64,49 @@ public class PetugasPengaduancontroller {
         return entity;
     }
 
-    @PutMapping("/tindak-lanjut3/{noPengaduan}")
-    public DefaultResponse<FormPengaduanDto> update3 (@PathVariable Long noPengaduan){
-        DefaultResponse<FormPengaduanDto> response = new DefaultResponse<>();
-        FormPengaduan entity = new FormPengaduan();
-        FormPengaduanDto dto = convertToDto2(entity);
-        Optional<FormPengaduan> optional = formPengaduanrepo.findById(noPengaduan);
-        if(optional.isPresent()){
-            pengaduanService.updateStatusComplaint2(noPengaduan);
-            response.setPesan("Status Berhasil Diperbarui");
-            response.setData(dto);
-        } else{
+    @PostMapping ("/tindak-lanjut3")
+    public DefaultResponse<FormPengaduan> update3 (@RequestBody FormPengaduanDto dto){
+        List<FormPengaduan> formPengaduanList = new ArrayList<>();
+        FormPengaduan entity = convertDtoToEntity2(dto);
+        DefaultResponse<FormPengaduan> response = new DefaultResponse<>();
+        for(FormPengaduan m: formPengaduanrepo.findAllByNoPengaduan(dto.getNoPengaduan())){
+            formPengaduanList.add(m);
+        }
+        if(formPengaduanList.isEmpty()){
             response.setPesan("Nomor Pengaduan Salah!");
+        } else{
+            pengaduanService.updateStatusComplaint2(dto.getNoPengaduan());
+            response.setPesan("Status Berhasil Diperbarui");
+            response.setData(entity);
         }
         return response;
     }
 
+    private FormPengaduan convertDtoToEntity2(FormPengaduanDto dto) {
+        FormPengaduan entity = new FormPengaduan();
+        entity.setNoPengaduan(dto.getNoPengaduan());
+        entity.setAlamat(dto.getAlamat());
+        entity.setDeskripsi(dto.getDeskripsi());
+        entity.setStatus("Pengaduan selesai, masalah telah diatasi");
+        return entity;
+    }
 
-    private FormPengaduanDto convertToDto(FormPengaduan entity){
-        FormPengaduanDto dto = new FormPengaduanDto();
-        dto.setNoPengaduan(entity.getNoPengaduan());
-        dto.setAlamat(entity.getAlamat());
-        dto.setDeskripsi(entity.getDeskripsi());
-        dto.setStatus("Sedang ditindak-lanjuti");
-        return dto;
-    }
-    private FormPengaduanDto convertToDto2(FormPengaduan entity){
-        FormPengaduanDto dto = new FormPengaduanDto();
-        dto.setNoPengaduan(entity.getNoPengaduan());
-        dto.setAlamat(entity.getAlamat());
-        dto.setDeskripsi(entity.getDeskripsi());
-        dto.setStatus("Pengaduan selesai, masalah telah diatasi");
-        return dto;
-    }
+//    private FormPengaduanDto convertToDto(FormPengaduan entity){
+//        FormPengaduanDto dto = new FormPengaduanDto();
+//        dto.setNoPengaduan(entity.getNoPengaduan());
+//        dto.setAlamat(entity.getAlamat());
+//        dto.setDeskripsi(entity.getDeskripsi());
+//        dto.setStatus("Sedang ditindak-lanjuti");
+//        return dto;
+//    }
+//    private FormPengaduanDto convertToDto2(FormPengaduan entity){
+//        FormPengaduanDto dto = new FormPengaduanDto();
+//        dto.setNoPengaduan(entity.getNoPengaduan());
+//        dto.setAlamat(entity.getAlamat());
+//        dto.setDeskripsi(entity.getDeskripsi());
+//        dto.setStatus("Pengaduan selesai, masalah telah diatasi");
+//        return dto;
+//    }
     @PostMapping("/pelimpahan-pengaduan")
     public DefaultResponse<AssignmentDto> insertForm (@RequestBody AssignmentDto dto){
         DefaultResponse<AssignmentDto> response = new DefaultResponse<>();
