@@ -14,6 +14,7 @@ public class PenggunaListrik {
     @Id
     @Column(name = "id",unique = true)
     private Long idPengguna;
+
     @Column
     private String namaPengguna;
     @Column
@@ -22,6 +23,10 @@ public class PenggunaListrik {
     private String jenisPengguna;
     @Column
     private Long daya;
+
+    @ManyToOne
+    @JoinColumn(name = "idJenis")
+    private JenisPelanggan idJenis;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "daftarPengguna")
@@ -64,6 +69,14 @@ public class PenggunaListrik {
 
     public void setDaya(Long daya) {
         this.daya = daya;
+    }
+
+    public JenisPelanggan getIdJenis() {
+        return idJenis;
+    }
+
+    public void setIdJenis(JenisPelanggan idJenis) {
+        this.idJenis = idJenis;
     }
 
     public Set<User> getUser() {

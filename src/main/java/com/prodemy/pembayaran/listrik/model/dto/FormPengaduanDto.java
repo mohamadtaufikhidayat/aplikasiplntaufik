@@ -7,7 +7,7 @@ public class FormPengaduanDto {
     private String alamat;
     private String deskripsi;
     private byte foto;
-    private String IdpenggunaListrik;
+    private Long IdpenggunaListrik;
 //    private Long codeTopik;
 
     public Long getNoPengaduan() {
@@ -42,11 +42,11 @@ public class FormPengaduanDto {
         this.foto = foto;
     }
 
-    public String getIdpenggunaListrik() {
+    public Long getIdpenggunaListrik() {
         return IdpenggunaListrik;
     }
 
-    public void setIdpenggunaListrik(String idpenggunaListrik) {
+    public void setIdpenggunaListrik(Long idpenggunaListrik) {
         IdpenggunaListrik = idpenggunaListrik;
     }
 

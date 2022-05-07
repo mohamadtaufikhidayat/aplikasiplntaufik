@@ -5,6 +5,7 @@ public class PenggunaListrikDto {
     private String namaPengguna;
     private String alamat;
     private String jenisPengguna;
+    private Long idJenis;
 
     private Long daya;
 
@@ -46,5 +47,13 @@ public class PenggunaListrikDto {
 
     public void setDaya(Long daya) {
         this.daya = daya;
+    }
+
+    public Long getIdJenis() {
+        return idJenis;
+    }
+
+    public void setIdJenis(Long idJenis) {
+        this.idJenis = idJenis;
     }
 }
