@@ -14,6 +14,14 @@ public class PenggunaListrik {
     @Column
     private String alamat;
     @Column
+    private String provinsi;
+    @Column
+    private String kota;
+    @Column
+    private String kecamatan;
+    @Column
+    private String kelurahan;
+    @Column
     private String jenisPengguna;
     @Column
     private Long daya;
@@ -69,5 +77,29 @@ public class PenggunaListrik {
 
     public void setUser(User app) {
         this.app = app;
+    }
+
+    public String getProvinsi() { return provinsi; }
+
+    public void setProvinsi(String provinsi) {
+        this.provinsi = provinsi;
+    }
+
+    public String getKota() { return kota;  }
+
+    public void setKota(String kota) {
+        this.kota = kota;
+    }
+
+    public String getKecamatan() {return kecamatan; }
+
+    public void setKecamatan(String kecamatan) {
+        this.kecamatan = kecamatan;
+    }
+
+    public String getKelurahan() {return kelurahan; }
+
+    public void setKelurahan(String kelurahan) {
+        this.kelurahan = kelurahan;
     }
 }

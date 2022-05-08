@@ -8,8 +8,6 @@ public class UserDto {
     private String email;
     private Long  no_pegawai;
 
-    private String waktu;
-
     public Long getId() {
         return id;
     }
@@ -40,13 +38,5 @@ public class UserDto {
 
     public void setNo_pegawai(Long no_pegawai) {
         this.no_pegawai = no_pegawai;
-    }
-
-    public String getWaktu() {
-        return waktu;
-    }
-
-    public void setWaktu(String waktu) {
-        this.waktu = waktu;
     }
 }

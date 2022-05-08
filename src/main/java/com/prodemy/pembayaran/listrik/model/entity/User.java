@@ -2,6 +2,7 @@ package com.prodemy.pembayaran.listrik.model.entity;
 
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
 
@@ -9,13 +10,14 @@ import javax.persistence.*;
 @Table(name="tb_app")
 public class User {
     @Id
-    @GeneratedValue(generator = "sequencepelangaan" )
+    @GeneratedValue(generator = "sequence-generator")
     @GenericGenerator(
-            name = "sequencepelanggan",strategy = "123",
+            name = "sequence-generator",
+            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
             parameters = {
-                    @org.hibernate.annotations.Parameter(name = "1",value = "1"),
-                    @org.hibernate.annotations.Parameter(name = "initial_value",value = "12031"),
-                    @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")
+                    @Parameter(name = "sequence_name", value = "user_sequence"),
+                    @Parameter(name = "initial_value", value = "41021031"),
+                    @Parameter(name = "increment_size", value = "1")
             }
     )
     @Column(name = "id_app")
