@@ -14,7 +14,7 @@ public class TransaksiDto {
     private Long biaya;
     private Long kwh;
     private String status;
-    private Long kwhxiduser;
+    private String statusTransaksi;
     private String metodePembayaran;
     private Long noRekeningPLN;
 //    private Date tanggal;
@@ -124,11 +124,11 @@ public class TransaksiDto {
         this.noRekeningPLN = noRekeningPLN;
     }
 
-    public Long getKwhxiduser() {
-        return kwhxiduser;
+    public String getStatusTransaksi() {
+        return statusTransaksi;
     }
 
-    public void setKwhxiduser(Long kwhxiduser) {
-        this.kwhxiduser = kwhxiduser;
+    public void setStatusTransaksi(String statusTransaksi) {
+        this.statusTransaksi = statusTransaksi;
     }
 }

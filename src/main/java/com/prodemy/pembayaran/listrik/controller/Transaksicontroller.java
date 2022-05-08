@@ -6,6 +6,7 @@ import com.prodemy.pembayaran.listrik.Repository.Tagihanrepo;
 import com.prodemy.pembayaran.listrik.Repository.Transaksirepo;
 import com.prodemy.pembayaran.listrik.Repository.Userrepo;
 import com.prodemy.pembayaran.listrik.Service.TransaksiService;
+import com.prodemy.pembayaran.listrik.model.dto.DefaultResponse;
 import com.prodemy.pembayaran.listrik.model.dto.TransaksiDto;
 import com.prodemy.pembayaran.listrik.model.entity.Transaksi;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/Transaksi")
@@ -31,8 +33,35 @@ public class Transaksicontroller {
         this.pelangganrepo=pelangganrepo;
     }
 
+    @PostMapping("/savecoba")
+    public DefaultResponse<TransaksiDto> saveTryDefaultres(@RequestBody TransaksiDto transaksiDto){
+        Transaksi transaksi=conversiDtoToEntity(transaksiDto);
+        DefaultResponse<TransaksiDto>response=new DefaultResponse<>();
+        if((transaksi.getNoTagihan().getStatus()).equals(null)&&transaksi.getNoTagihan().getBiaya()==transaksiDto.getBiaya()&&transaksi.getMetodePembayaran().getNoRekPLN()==transaksiDto.getNoRekeningPLN()){
+            response.setPesan("transaksi berhasil");
+            transaksiDto.setStatusTransaksi("Transaksi Berhasil");
+            response.setData(transaksiDto);
+            transaksirepo.save(transaksi);
+        }else{
+            response.setPesan("transaksi gagal");
+        }
+        return response;
+    }
+    @PostMapping("/savecobatrx")
+    public DefaultResponse<TransaksiDto> saveTrycobatrx(@RequestBody TransaksiDto transaksiDto){
+        Transaksi transaksi=conversiDtoToEntity(transaksiDto);
+        DefaultResponse<TransaksiDto>response=new DefaultResponse<>();
+        if((transaksi.getNoTagihan().getStatus()).equals(null)&&transaksi.getNoTagihan().getBiaya()==transaksiDto.getBiaya()&&transaksi.getMetodePembayaran().getNoRekPLN()==transaksiDto.getNoRekeningPLN()){
+            response.setPesan("transaksi berhasil");
+            response.setData(transaksiDto);
+        }else{
+            response.setPesan("transaksi gagal");
+        }
+        transaksiService.insertDataTransdeff(transaksi, transaksiDto);
+        return response;
+    }
     @PostMapping("/save")
-    public TransaksiDto saveTry(@RequestBody TransaksiDto transaksiDto){
+    public TransaksiDto saveTryy(@RequestBody TransaksiDto transaksiDto){
         Transaksi transaksi=conversiDtoToEntity(transaksiDto);
         transaksirepo.save(transaksi);
         return conversiEntityToDto(transaksi);
