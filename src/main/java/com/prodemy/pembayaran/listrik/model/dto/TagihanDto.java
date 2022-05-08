@@ -4,15 +4,14 @@ import java.util.Date;
 
 public class TagihanDto {
     private Long noTagihan;
-//    private Long noTransaksi;
-    private String idUser;
+    private Long noUrut;
     private Long idPenggunaListrik;
-//    private Date tanggal;
     private String bulan;
     private Long biaya;
     private Long kwh;
-    private String status;
     private String metodePembayaran;
+    private String status;
+
 
     public Long getNoTagihan() {
         return noTagihan;
@@ -22,12 +21,12 @@ public class TagihanDto {
         this.noTagihan = noTagihan;
     }
 
-    public String getIdUser() {
-        return idUser;
+    public Long getNoUrut() {
+        return noUrut;
     }
 
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
+    public void setNoUrut(Long noUrut) {
+        this.noUrut = noUrut;
     }
 
     public Long getIdPenggunaListrik() {
@@ -37,15 +36,6 @@ public class TagihanDto {
     public void setIdPenggunaListrik(Long idPenggunaListrik) {
         this.idPenggunaListrik = idPenggunaListrik;
     }
-
-//    public Date getTanggal() {
-//        return tanggal;
-//    }
-//
-//    public void setTanggal(Date tanggal) {
-//        this.tanggal = tanggal;
-//    }
-
 
     public String getBulan() {
         return bulan;
@@ -71,6 +61,14 @@ public class TagihanDto {
         this.kwh = kwh;
     }
 
+    public String getMetodePembayaran() {
+        return metodePembayaran;
+    }
+
+    public void setMetodePembayaran(String metodePembayaran) {
+        this.metodePembayaran = metodePembayaran;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -79,11 +77,5 @@ public class TagihanDto {
         this.status = status;
     }
 
-    public String getMetodePembayaran() {
-        return metodePembayaran;
-    }
 
-    public void setMetodePembayaran(String metodePembayaran) {
-        this.metodePembayaran = metodePembayaran;
-    }
 }

@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface DataPelRepo extends JpaRepository<PenggunaListrik,Long> {
-
     @Query("select r from PenggunaListrik r where r.idPengguna = :idPengguna")
     Optional<PenggunaListrik> findByIdPengguna(@PathParam("idPelanggan") Long idPengguna);
 
