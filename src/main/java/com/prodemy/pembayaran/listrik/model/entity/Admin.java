@@ -1,8 +1,15 @@
 package com.prodemy.pembayaran.listrik.model.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+//<<<<<<< HEAD
+//import javax.persistence.Entity;
+//import javax.persistence.Id;
+//import javax.persistence.Table;
+//=======
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import javax.persistence.*;
+//>>>>>>> 52b32ecdee5d332940005f66364861016f5621ec
 
 @Entity
 @Table(name = "tbl_admin")
@@ -12,8 +19,13 @@ public class Admin {
 
     private String nama;
 
+//<<<<<<< HEAD
+//    private Long no_aplikasi;
+//
+//=======
+    @Column(unique = true,nullable = false)//Masih Bingung gimana bisa auto generated value
     private Long no_aplikasi;
-
+//>>>>>>> 52b32ecdee5d332940005f66364861016f5621ec
     public Long getId() {
         return id;
     }

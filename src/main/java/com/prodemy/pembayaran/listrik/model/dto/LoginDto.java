@@ -9,6 +9,11 @@ public class LoginDto {
 
     private String password;
 
+//<<<<<<< HEAD
+//=======
+    private String role;
+
+//>>>>>>> 52b32ecdee5d332940005f66364861016f5621ec
     public Long getId() {
         return id;
     }
@@ -40,4 +45,15 @@ public class LoginDto {
     public void setPassword(String password) {
         this.password = password;
     }
+<<<<<<< HEAD
+=======
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+>>>>>>> 52b32ecdee5d332940005f66364861016f5621ec
 }

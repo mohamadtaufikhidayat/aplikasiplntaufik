@@ -11,17 +11,33 @@ public class Tagihan {
     @Column//pk
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long noTagihan;
+<<<<<<< HEAD
 
+=======
+//    @OneToOne//fk
+//    @JoinColumn(name="noTransaksi")
+//    private Transaksi noTransaksi;
+    @ManyToOne//fk
+    @JoinColumn(name="IdUser")
+    private User idUser;
+>>>>>>> 52b32ecdee5d332940005f66364861016f5621ec
     @ManyToOne//fk
     @JoinColumn(name="IdPenggunaListrik")
     private PenggunaListrik idPenggunaListrik;
 
+<<<<<<< HEAD
     @OneToOne
     @JoinColumn(name = "noUrut")
     private CatatMeter noUrut;
     @Column(name = "bulan")
     private String bulan;
     @Column(name = "biaya")
+=======
+    @Column
+//    private Date tanggal;
+    private String bulan;
+    @Column
+>>>>>>> 52b32ecdee5d332940005f66364861016f5621ec
     private Long biaya;
     @Column(name = "kwh")
     private Long kwh;
@@ -37,12 +53,21 @@ public class Tagihan {
         this.noTagihan = noTagihan;
     }
 
+<<<<<<< HEAD
     public CatatMeter getNoUrut() {
         return noUrut;
     }
 
     public void setNoUrut(CatatMeter noUrut) {
         this.noUrut = noUrut;
+=======
+    public User getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(User idUser) {
+        this.idUser = idUser;
+>>>>>>> 52b32ecdee5d332940005f66364861016f5621ec
     }
 
     public PenggunaListrik getIdPenggunaListrik() {
@@ -53,6 +78,18 @@ public class Tagihan {
         this.idPenggunaListrik = idPenggunaListrik;
     }
 
+<<<<<<< HEAD
+=======
+//    public Date getTanggal() {
+//        return tanggal;
+//    }
+//
+//    public void setTanggal(Date tanggal) {
+//        this.tanggal = tanggal;
+//    }
+
+
+>>>>>>> 52b32ecdee5d332940005f66364861016f5621ec
     public String getBulan() {
         return bulan;
     }

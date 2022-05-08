@@ -8,8 +8,11 @@ public class UserDto {
     private String email;
     private Long  no_pegawai;
 
-    private String waktu;
-
+//<<<<<<< HEAD
+//    private String waktu;
+//
+//=======
+//>>>>>>> 52b32ecdee5d332940005f66364861016f5621ec
     public Long getId() {
         return id;
     }
@@ -41,6 +44,7 @@ public class UserDto {
     public void setNo_pegawai(Long no_pegawai) {
         this.no_pegawai = no_pegawai;
     }
+<<<<<<< HEAD
 
     public String getWaktu() {
         return waktu;
@@ -49,4 +53,6 @@ public class UserDto {
     public void setWaktu(String waktu) {
         this.waktu = waktu;
     }
+=======
+>>>>>>> 52b32ecdee5d332940005f66364861016f5621ec
 }

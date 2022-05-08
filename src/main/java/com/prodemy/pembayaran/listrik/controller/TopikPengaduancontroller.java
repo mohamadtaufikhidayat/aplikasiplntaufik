@@ -22,20 +22,36 @@ public class TopikPengaduancontroller {
         this.topikPengaduanrepo = topikPengaduanrepo;
     }
 
-    @GetMapping("/list-topik-berdasarkan-kelompok/{kelompokTopik}")
-    public List<TopikPengaduanDto> getListTopikBerdasarkanKelompok(@PathVariable String kelompokTopik){
+//<<<<<<< HEAD
+//    @GetMapping("/list-topik-berdasarkan-kelompok/{kelompokTopik}")
+//    public List<TopikPengaduanDto> getListTopikBerdasarkanKelompok(@PathVariable String kelompokTopik){
+//        List<TopikPengaduanDto> list = new ArrayList<>();
+//        for(TopikPengaduan x: topikPengaduanrepo.findAllByKelompokTopik(kelompokTopik)){
+//            list.add(convertEntityToDto2(x));
+//        }
+//        return list;
+//    }
+//
+//    @GetMapping("/list-kelompok-topik")
+//    public List<TopikPengaduanDto> getListPadam(){
+//        List<TopikPengaduanDto> list = new ArrayList<>();
+//        for(TopikPengaduan x: topikPengaduanrepo.findAll()){
+//            list.add(convertEntityToDto1(x));
+//=======
+    @GetMapping("/list-kelompok-topik")
+    public List<TopikPengaduanDto> getListKelompokTopik2(){
         List<TopikPengaduanDto> list = new ArrayList<>();
-        for(TopikPengaduan x: topikPengaduanrepo.findAllByKelompokTopik(kelompokTopik)){
-            list.add(convertEntityToDto2(x));
+        for(TopikPengaduan x: topikPengaduanrepo.findByCodeTopik()){
+            list.add(convertEntityToDto1(x));
         }
         return list;
     }
-
-    @GetMapping("/list-kelompok-topik")
-    public List<TopikPengaduanDto> getListPadam(){
+    @GetMapping("/list-topik-berdasarkan-kelompok/{kelompokTopik}")
+    public List<TopikPengaduanDto> getListTopikBerdasarkanKelompok(@PathVariable String kelompokTopik){
         List<TopikPengaduanDto> list = new ArrayList<>();
-        for(TopikPengaduan x: topikPengaduanrepo.findAll()){
-            list.add(convertEntityToDto1(x));
+        for(TopikPengaduan x: topikPengaduanrepo.findAllByKelompokTopikIgnoreCase(kelompokTopik)){
+            list.add(convertEntityToDto2(x));
+//>>>>>>> 52b32ecdee5d332940005f66364861016f5621ec
         }
         return list;
     }
@@ -47,6 +63,17 @@ public class TopikPengaduancontroller {
         }
         return list;
     }
+//<<<<<<< HEAD
+//=======
+    @GetMapping("/list-containing-topik/{namaTopik}")
+    public List<TopikPengaduanDto> getListTopikContaining(@PathVariable String namaTopik){
+        List<TopikPengaduanDto> list = new ArrayList<>();
+        for(TopikPengaduan x: topikPengaduanrepo.findAllByNamaTopikIsContainingIgnoreCase(namaTopik)){
+            list.add(convertEntityToDto3(x));
+        }
+        return list;
+    }
+//>>>>>>> 52b32ecdee5d332940005f66364861016f5621ec
 
      public TopikPengaduanDto convertEntityToDto1 (TopikPengaduan entity){
         TopikPengaduanDto dto = new TopikPengaduanDto();
@@ -58,6 +85,15 @@ public class TopikPengaduancontroller {
         dto.setNamaTopik(entity.getNamaTopik());
         return dto;
     }
+//<<<<<<< HEAD
+//=======
+    public TopikPengaduanDto convertEntityToDto3 (TopikPengaduan entity){
+        TopikPengaduanDto dto = new TopikPengaduanDto();
+        dto.setKelompokTopik(entity.getKelompokTopik());
+        dto.setNamaTopik(entity.getNamaTopik());
+        return dto;
+    }
+//>>>>>>> 52b32ecdee5d332940005f66364861016f5621ec
     public TopikPengaduan convertDtoToEntity (TopikPengaduanDto dto) {
         TopikPengaduan entity = new TopikPengaduan();
         entity.setKelompokTopik(dto.getKelompokTopik());

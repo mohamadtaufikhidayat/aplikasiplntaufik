@@ -1,13 +1,24 @@
 package com.prodemy.pembayaran.listrik.model.entity;
 
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name="t_FormpPengaduan")
 public class FormPengaduan {
     @Id
-    @Column
+    @GeneratedValue(generator = "sequencepengaduan")
+    @GenericGenerator(
+            name = "sequencepengaduan",
+            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+            parameters = {
+                    @org.hibernate.annotations.Parameter(name = "sequence_name", value = "complaint_sequence"),
+                    @org.hibernate.annotations.Parameter(name = "initial_value", value = "1201"),
+                    @org.hibernate.annotations.Parameter(name = "increment_size", value = "1")
+            }
+    )
     private Long noPengaduan;
     @ManyToOne
     @JoinColumn(name="IdPenggunaListrik")
@@ -17,14 +28,43 @@ public class FormPengaduan {
     @Column
     private String deskripsi;
     @Column
-    private byte foto;
-    //    @ManyToOne
-//    @JoinColumn(name="IdUser")
-//    private User Iduser;
+//<<<<<<< HEAD
+//    private byte foto;
+//    //    @ManyToOne
+////    @JoinColumn(name="IdUser")
+////    private User Iduser;
+//
+////    @ManyToOne
+////    @JoinColumn(name="codeTopik")
+////    private TopikPengaduan codeTopik;
+//=======
+    private String status;
+    @ManyToOne
+    @JoinColumn(name = "KodeTopik")
+    public TopikPengaduan kodeTopik;
+    @ManyToOne
+    @JoinColumn(name="IdPenggunaListrik")
+    private PenggunaListrik IdpenggunaListrik;
 
-//    @ManyToOne
-//    @JoinColumn(name="codeTopik")
-//    private TopikPengaduan codeTopik;
+//    @Enumerated(EnumType.ORDINAL)
+//    public NamaTopik namaTopik;
+//
+//    public NamaTopik getNamaTopik() {
+//        return namaTopik;
+//    }
+//
+//    public void setNamaTopik(NamaTopik namaTopik) {
+//        this.namaTopik = namaTopik;
+//    }
+
+    public TopikPengaduan getKodeTopik() {
+        return kodeTopik;
+    }
+
+    public void setKodeTopik(TopikPengaduan kodeTopik) {
+        this.kodeTopik = kodeTopik;
+    }
+//>>>>>>> 52b32ecdee5d332940005f66364861016f5621ec
 
     public Long getNoPengaduan() {
         return noPengaduan;
@@ -50,14 +90,6 @@ public class FormPengaduan {
         this.deskripsi = deskripsi;
     }
 
-    public byte getFoto() {
-        return foto;
-    }
-
-    public void setFoto(byte foto) {
-        this.foto = foto;
-    }
-
     public PenggunaListrik getIdpenggunaListrik() {
         return IdpenggunaListrik;
     }
@@ -66,12 +98,23 @@ public class FormPengaduan {
         IdpenggunaListrik = idpenggunaListrik;
     }
 
+//<<<<<<< HEAD
+//
+////    public TopikPengaduan getCodeTopik() {
+////        return codeTopik;
+////    }
+//
+////    public void setCodeTopik(TopikPengaduan codeTopik) {
+////        this.codeTopik = codeTopik;
+////    }
+//=======
+    public String getStatus() {
+        return status;
+    }
 
-//    public TopikPengaduan getCodeTopik() {
-//        return codeTopik;
-//    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-//    public void setCodeTopik(TopikPengaduan codeTopik) {
-//        this.codeTopik = codeTopik;
-//    }
+//>>>>>>> 52b32ecdee5d332940005f66364861016f5621ec
 }
