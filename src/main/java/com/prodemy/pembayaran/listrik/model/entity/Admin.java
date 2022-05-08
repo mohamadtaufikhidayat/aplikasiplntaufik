@@ -1,5 +1,8 @@
 package com.prodemy.pembayaran.listrik.model.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,8 +13,8 @@ public class Admin {
 
     private String nama;
 
+    @Column(unique = true,nullable = false)//Masih Bingung gimana bisa auto generated value
     private Long no_aplikasi;
-
     public Long getId() {
         return id;
     }
