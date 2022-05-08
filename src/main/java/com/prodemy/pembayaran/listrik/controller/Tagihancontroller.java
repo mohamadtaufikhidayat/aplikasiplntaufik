@@ -27,7 +27,6 @@ public class Tagihancontroller {
     @Autowired
     private final Tagihanrepo tagihanrepo;
     private final DataPelRepo datapelrepo;
-<<<<<<< HEAD
     private final JenisPelangganRepo jenisPelangganRepo;
     private final CatatMeterRepo catatMeterRepo;
     @Autowired
@@ -36,9 +35,6 @@ public class Tagihancontroller {
     @Autowired
     public Tagihancontroller(Tagihanrepo tagihanrepo, DataPelRepo datapelrepo,
                              JenisPelangganRepo jenisPelangganRepo, CatatMeterRepo catatMeterRepo) {
-=======
-    public Tagihancontroller(Tagihanrepo tagihanrepo, DataPelRepo datapelrepo) {
->>>>>>> 71a33a14f401899d673c95e0683c9b2e51deaf9b
         this.tagihanrepo = tagihanrepo;
         this.datapelrepo = datapelrepo;
         this.jenisPelangganRepo = jenisPelangganRepo;
