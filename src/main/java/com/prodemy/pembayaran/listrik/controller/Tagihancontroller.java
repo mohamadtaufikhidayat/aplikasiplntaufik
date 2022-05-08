@@ -65,6 +65,7 @@ public class Tagihancontroller {
         return tgh;
     }
 
+
     @GetMapping("/cek/{idPenggunaListrik}/{bulan}")
     public DefaultResponse<TagihanDto> getByIdPenggunaListrikAndBulan(@PathVariable Long idPenggunaListrik, @PathVariable String bulan) {
         DefaultResponse<TagihanDto> response = new DefaultResponse<>();
@@ -207,52 +208,5 @@ public class Tagihancontroller {
         }
         return list;
     }
-
-
-
-
-
-
-
-//    @PostMapping("/tgh")
-//    public TagihanDto insertBiaya(@RequestBody TagihanDto dto){
-//        Tagihan tagihan = convertToEntity(dto);
-//        tagihanService.insertBiaya(tagihan);
-//        return convertToDto(tagihan);
-//    }
-
-//    private Tagihan convertToEntity(TagihanDto pt) {
-//        Tagihan tghn = new Tagihan();
-//        if(datapelrepo.findById(pt.getIdPenggunaListrik()).isPresent()){
-//            PenggunaListrik penggunaListrik =  datapelrepo.findById(pt.getIdPenggunaListrik()).get();
-//            tghn.setIdPenggunaListrik(penggunaListrik);
-//        }
-////        tghn.setNoTagihan(pt.getNoTagihan());
-//        tghn.setBulan(pt.getBulan());
-//        tghn.setKwh(pt.getKwh());
-////        tghn.setKwh((long) (Math.floor(Math.random() * 100) + 100));
-//        Long bi = Long.valueOf(0);
-//        if (datapelrepo.findJenisByIdPengguna(pt.getIdPenggunaListrik()).getJenis()=="RT1") {
-//            bi = tghn.getKwh()*1352;
-//        }
-//        tghn.setBiaya(bi);
-//        tghn.setMetodePembayaran(pt.getMetodePembayaran());
-//        tghn.setStatus(pt.getStatus());
-//
-//        return tghn;
-//    }
-
-//    public void hitungBiaya() {
-//        TagihanDto tagihanDto = new TagihanDto();
-//        tagihanDto.setKwh((long) (Math.floor(Math.random() * 100) + 100));
-//        if (penggunaListrikrepo.findJenisByIdPengguna(tagihanDto.getIdPenggunaListrik()).getJenis()=="RT1") {
-//            tagihanDto.setBiaya(tagihanDto.getKwh()*1352);
-//        }
-//        tagihanrepo.save(convertDtoToEntity(tagihanDto));
-//    }
-
-    //        logger.info(String.valueOf(Math.floor(Math.random() * 100) + 100));
-//        logger.info(String.valueOf(penggunaListrikrepo.findJenisByIdPengguna("1234").getJenis()));
-//        logger.info(String.valueOf(penggunaListrikrepo.findJenisByIdPengguna("1234").getDaya()));
 
 }

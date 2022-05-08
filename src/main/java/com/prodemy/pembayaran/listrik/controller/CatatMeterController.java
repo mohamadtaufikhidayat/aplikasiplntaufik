@@ -25,7 +25,6 @@ public class CatatMeterController {
     public CatatMeterController(CatatMeterRepo catatMeterRepo, DataPelRepo dataPelRepo){
         this.catatMeterRepo = catatMeterRepo;
         this.dataPelRepo = dataPelRepo;
-//        this.tagihanrepo = tagihanrepo;
     }
     @PostMapping("/kwh")
     public CatatMeterDto catatKwh (@RequestBody CatatMeterDto ct){

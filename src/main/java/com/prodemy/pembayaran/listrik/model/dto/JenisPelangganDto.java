@@ -1,11 +1,20 @@
 package com.prodemy.pembayaran.listrik.model.dto;
 
 public class JenisPelangganDto {
+    private Long idJenis;
     private String jenis;
 
     private String daya;
 
     private Long tarif;
+
+    public Long getIdJenis() {
+        return idJenis;
+    }
+
+    public void setIdJenis(Long idJenis) {
+        this.idJenis = idJenis;
+    }
 
     public String getJenis() {
         return jenis;
