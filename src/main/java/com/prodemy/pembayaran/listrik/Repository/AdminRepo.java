@@ -10,6 +10,9 @@ import java.util.Optional;
 
 public interface AdminRepo extends JpaRepository<Admin, Long> {
 
-    @Query("select x from Admin x where x.no_aplikasi =:no_Pegawai")
-    Optional<Admin> findByNo_aplikasi(@PathParam("no_pegawi")Long no_Pegawai);
+    @Query("select p from User p where p.email = :email")
+    Optional<User> findByEmail(@PathParam("email")String email);
+
+    @Query ("select x from Admin x where x.no_aplikasi = :no_Pegawai")
+    Optional<Admin> findByNo_aplikasi(@PathParam("no_pegawai")Long no_Pegawai);
 }

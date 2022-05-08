@@ -93,4 +93,8 @@ public class PenggunaListrikDto {
     public void setKelurahan(String kelurahan) {
         this.kelurahan = kelurahan;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 52b32ecdee5d332940005f66364861016f5621ec

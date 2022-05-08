@@ -2,7 +2,6 @@ package com.prodemy.pembayaran.listrik.model.entity;
 
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name="t_tagihan")

@@ -20,28 +20,31 @@ public class UserService {
     @Autowired
     private AdminRepo adm;
 
-    public UserDto register (UserDto dto) {
-      User data = convertDTOtoEntity(dto);
-      repo.save(data);
-      return (dto);
+    public UserDto register(UserDto dto) {
+        User data = convertDTOtoEntity(dto);
+        repo.save(data);
+        return (dto);
     }
-    private UserDto convertToDto(User kota){
+
+    private UserDto convertToDto(User kota) {
         UserDto kotaDto = new UserDto();
         kotaDto.setEmail(kota.getEmail());
         kotaDto.setPassword(kota.getPassword());
         return kotaDto;
     }
+
     public User convertDTOtoEntity(UserDto dto) {
         User data = new User();
         data.setNoInduk(dto.getId());
         data.setEmail(dto.getEmail());
         data.setPassword(dto.getPassword());
-        Optional<Admin> option = adm.findByNo_aplikasi(dto.getNo_pegawai());
-        if(option.isPresent()){
-        data.setData(dto.getNo_pegawai());
+        Optional<Admin> role = adm.findByNo_aplikasi(dto.getNo_pegawai());
+        if (role.isPresent()) {
+            data.setData(dto.getNo_pegawai());
         }else{
-            data.setData(null);
-        }
+                data.setData(null);
+            }
         return data;
+        }
+
     }
-}

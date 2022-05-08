@@ -13,11 +13,17 @@ public class Login {
     @Column(name = "kdlog")
     private Long Id;
 
+    private String role;
+
     @Column(name = "waktu")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date createDate = new Date(System.currentTimeMillis());
     @Column(name = "pass")
     private String password;
+
+    @ManyToOne
+    @JoinColumn(name="username", nullable = false)
+    private User user;
 
     public Long getId() {
         return Id;
@@ -35,4 +41,27 @@ public class Login {
         this.password = password;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User app) {
+        this.user = app;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
 }

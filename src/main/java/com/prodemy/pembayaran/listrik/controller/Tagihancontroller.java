@@ -3,8 +3,13 @@ package com.prodemy.pembayaran.listrik.controller;
 import com.prodemy.pembayaran.listrik.Repository.CatatMeterRepo;
 import com.prodemy.pembayaran.listrik.Repository.JenisPelangganRepo;
 import com.prodemy.pembayaran.listrik.Repository.Tagihanrepo;
+<<<<<<< HEAD
 import com.prodemy.pembayaran.listrik.Repository.DataPelRepo;
 import com.prodemy.pembayaran.listrik.Service.TagihanService;
+=======
+
+import com.prodemy.pembayaran.listrik.Repository.DataPelRepo;
+>>>>>>> 52b32ecdee5d332940005f66364861016f5621ec
 import com.prodemy.pembayaran.listrik.model.dto.DefaultResponse;
 import com.prodemy.pembayaran.listrik.model.dto.TagihanDto;
 import com.prodemy.pembayaran.listrik.model.entity.CatatMeter;
@@ -27,6 +32,7 @@ public class Tagihancontroller {
     @Autowired
     private final Tagihanrepo tagihanrepo;
     private final DataPelRepo datapelrepo;
+<<<<<<< HEAD
     private final JenisPelangganRepo jenisPelangganRepo;
     private final CatatMeterRepo catatMeterRepo;
     @Autowired
@@ -35,6 +41,9 @@ public class Tagihancontroller {
     @Autowired
     public Tagihancontroller(Tagihanrepo tagihanrepo, DataPelRepo datapelrepo,
                              JenisPelangganRepo jenisPelangganRepo, CatatMeterRepo catatMeterRepo) {
+=======
+    public Tagihancontroller(Tagihanrepo tagihanrepo, DataPelRepo datapelrepo) {
+>>>>>>> 52b32ecdee5d332940005f66364861016f5621ec
         this.tagihanrepo = tagihanrepo;
         this.datapelrepo = datapelrepo;
         this.jenisPelangganRepo = jenisPelangganRepo;
