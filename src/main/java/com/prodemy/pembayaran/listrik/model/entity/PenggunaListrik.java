@@ -1,31 +1,40 @@
 package com.prodemy.pembayaran.listrik.model.entity;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="t_plistrik")
 public class PenggunaListrik {
     @Id
-    @Column
-    private String idPengguna;
+    @Column(name = "id",unique = true)
+    private Long idPengguna;
+
     @Column
     private String namaPengguna;
     @Column
     private String alamat;
     @Column
-    private String golonganDaya;
+    private String jenisPengguna;
     @Column
     private Long daya;
 
-    public String getIdPengguna() {
+    @ManyToOne
+    @JoinColumn(name = "idJenis")
+    private JenisPelanggan idJenis;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "daftarPengguna")
+    private Set<User> user = new HashSet<>();
+    public Long getIdPengguna() {
         return idPengguna;
     }
 
-    public void setIdPengguna(String idPengguna) {
+    public void setIdPengguna(Long idPengguna) {
         this.idPengguna = idPengguna;
     }
 
@@ -45,12 +54,12 @@ public class PenggunaListrik {
         this.alamat = alamat;
     }
 
-    public String getGolonganDaya() {
-        return golonganDaya;
+    public String getJenisPengguna() {
+        return jenisPengguna;
     }
 
-    public void setGolonganDaya(String golonganDaya) {
-        this.golonganDaya = golonganDaya;
+    public void setJenisPengguna(String jenisPengguna) {
+        this.jenisPengguna = jenisPengguna;
     }
 
     public Long getDaya() {
@@ -59,5 +68,17 @@ public class PenggunaListrik {
 
     public void setDaya(Long daya) {
         this.daya = daya;
+    }
+
+    public JenisPelanggan getIdJenis() {
+        return idJenis;
+    }
+
+    public void setIdJenis(JenisPelanggan idJenis) {
+        this.idJenis = idJenis;
+    }
+
+    public Set<User> getUser() {
+        return user;
     }
 }

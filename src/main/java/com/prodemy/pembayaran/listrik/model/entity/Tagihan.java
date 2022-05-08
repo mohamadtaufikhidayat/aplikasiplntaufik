@@ -2,7 +2,6 @@ package com.prodemy.pembayaran.listrik.model.entity;
 
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name="t_tagihan")
@@ -10,50 +9,40 @@ public class Tagihan {
 
     @Id
     @Column//pk
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long noTagihan;
-    @OneToOne//fk
-    @JoinColumn(name="noTransaksi")
-    private Transaksi noTransaksi;
-    @ManyToOne//fk
-    @JoinColumn(name="IdUser")
-    private User idUser;
+
     @ManyToOne//fk
     @JoinColumn(name="IdPenggunaListrik")
     private PenggunaListrik idPenggunaListrik;
 
-    @Column
-    private Date tanggal;
-    @Column
+    @OneToOne
+    @JoinColumn(name = "noUrut")
+    private CatatMeter noUrut;
+    @Column(name = "bulan")
+    private String bulan;
+    @Column(name = "biaya")
     private Long biaya;
-    @Column
+    @Column(name = "kwh")
     private Long kwh;
     @Column
-    private String status;
-    @Column
     private String metodePembayaran;
-
+    @Column
+    private String status;
     public Long getNoTagihan() {
         return noTagihan;
     }
 
-    public void setNoTagigan(Long noTagihan) {
+    public void setNoTagihan(Long noTagihan) {
         this.noTagihan = noTagihan;
     }
 
-    public Transaksi getNoTransaksi() {
-        return noTransaksi;
+    public CatatMeter getNoUrut() {
+        return noUrut;
     }
 
-    public void setNoTransaksi(Transaksi noTransaksi) {
-        this.noTransaksi = noTransaksi;
-    }
-
-    public User getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(User idUser) {
-        this.idUser = idUser;
+    public void setNoUrut(CatatMeter noUrut) {
+        this.noUrut = noUrut;
     }
 
     public PenggunaListrik getIdPenggunaListrik() {
@@ -64,12 +53,12 @@ public class Tagihan {
         this.idPenggunaListrik = idPenggunaListrik;
     }
 
-    public Date getTanggal() {
-        return tanggal;
+    public String getBulan() {
+        return bulan;
     }
 
-    public void setTanggal(Date tanggal) {
-        this.tanggal = tanggal;
+    public void setBulan(String bulan) {
+        this.bulan = bulan;
     }
 
     public long getBiaya() {
@@ -88,19 +77,19 @@ public class Tagihan {
         this.kwh = kwh;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getMetodePembayaran() {
         return metodePembayaran;
     }
 
     public void setMetodePembayaran(String metodePembayaran) {
         this.metodePembayaran = metodePembayaran;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

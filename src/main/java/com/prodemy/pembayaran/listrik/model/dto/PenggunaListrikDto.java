@@ -1,18 +1,19 @@
 package com.prodemy.pembayaran.listrik.model.dto;
 
 public class PenggunaListrikDto {
-    private String idPengguna;
+    private Long idPengguna;
     private String namaPengguna;
     private String alamat;
-    private String golonganDaya;
+    private String jenisPengguna;
+    private Long idJenis;
 
     private Long daya;
 
-    public String getIdPengguna() {
+    public Long getIdPengguna() {
         return idPengguna;
     }
 
-    public void setIdPengguna(String idPengguna) {
+    public void setIdPengguna(Long idPengguna) {
         this.idPengguna = idPengguna;
     }
 
@@ -32,12 +33,12 @@ public class PenggunaListrikDto {
         this.alamat = alamat;
     }
 
-    public String getGolonganDaya() {
-        return golonganDaya;
+    public String getJenisPengguna() {
+        return jenisPengguna;
     }
 
-    public void setGolonganDaya(String golonganDaya) {
-        this.golonganDaya = golonganDaya;
+    public void setJenisPengguna(String jenisPengguna) {
+        this.jenisPengguna = jenisPengguna;
     }
 
     public Long getDaya() {
@@ -46,5 +47,13 @@ public class PenggunaListrikDto {
 
     public void setDaya(Long daya) {
         this.daya = daya;
+    }
+
+    public Long getIdJenis() {
+        return idJenis;
+    }
+
+    public void setIdJenis(Long idJenis) {
+        this.idJenis = idJenis;
     }
 }

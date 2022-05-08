@@ -1,19 +1,12 @@
 package com.prodemy.pembayaran.listrik.model.dto;
 
-import com.prodemy.pembayaran.listrik.model.entity.PenggunaListrik;
-import com.prodemy.pembayaran.listrik.model.entity.TopikPengaduan;
-
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 public class FormPengaduanDto {
     private Long noPengaduan;
     private String alamat;
     private String deskripsi;
     private byte foto;
-    private String IdpenggunaListrik;
-    private Long codeTopik;
+    private Long IdpenggunaListrik;
+//    private Long codeTopik;
 
     public Long getNoPengaduan() {
         return noPengaduan;
@@ -47,19 +40,19 @@ public class FormPengaduanDto {
         this.foto = foto;
     }
 
-    public String getIdpenggunaListrik() {
+    public Long getIdpenggunaListrik() {
         return IdpenggunaListrik;
     }
 
-    public void setIdpenggunaListrik(String idpenggunaListrik) {
+    public void setIdpenggunaListrik(Long idpenggunaListrik) {
         IdpenggunaListrik = idpenggunaListrik;
     }
 
-    public Long getCodeTopik() {
-        return codeTopik;
-    }
-
-    public void setCodeTopik(Long codeTopik) {
-        this.codeTopik = codeTopik;
-    }
+//    public Long getCodeTopik() {
+//        return codeTopik;
+//    }
+//
+//    public void setCodeTopik(Long codeTopik) {
+//        this.codeTopik = codeTopik;
+//    }
 }

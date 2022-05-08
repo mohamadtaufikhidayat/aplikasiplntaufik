@@ -1,9 +1,6 @@
 package com.prodemy.pembayaran.listrik.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="t_TopikPengaduan")
@@ -15,6 +12,17 @@ public class TopikPengaduan {
     private String kelompokTopik;
     @Column
     private String namaTopik;
+    @ManyToOne
+    @JoinColumn(name="noPengaduan")
+    private FormPengaduan formPengaduan;
+
+    public FormPengaduan getFormPengaduan() {
+        return formPengaduan;
+    }
+
+    public void setFormPengaduan(FormPengaduan formPengaduan) {
+        this.formPengaduan = formPengaduan;
+    }
 
     public Long getCodeTopik() {
         return codeTopik;
@@ -39,7 +47,5 @@ public class TopikPengaduan {
     public void setNamaTopik(String namaTopik) {
         this.namaTopik = namaTopik;
     }
-    //    @ManyToOne
-//    @JoinColumn(name="noPengaduan")
-//    private FormPengaduan formPengaduan;
+
 }

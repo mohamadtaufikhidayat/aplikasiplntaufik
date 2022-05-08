@@ -1,16 +1,15 @@
 package com.prodemy.pembayaran.listrik.model.dto;
 
-import java.util.Date;
-
 public class TagihanDto {
     private Long noTagihan;
-    private Long noTransaksi;
-    private String idUser;
-    private String idPenggunaListrik;
-    private Date tanggal;
+    private Long noUrut;
+    private Long idPenggunaListrik;
+    private String bulan;
     private Long biaya;
     private Long kwh;
+    private String metodePembayaran;
     private String status;
+
 
     public Long getNoTagihan() {
         return noTagihan;
@@ -20,36 +19,28 @@ public class TagihanDto {
         this.noTagihan = noTagihan;
     }
 
-    public Long getNoTransaksi() {
-        return noTransaksi;
+    public Long getNoUrut() {
+        return noUrut;
     }
 
-    public void setNoTransaksi(Long noTransaksi) {
-        this.noTransaksi = noTransaksi;
+    public void setNoUrut(Long noUrut) {
+        this.noUrut = noUrut;
     }
 
-    public String getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
-    }
-
-    public String getIdPenggunaListrik() {
+    public Long getIdPenggunaListrik() {
         return idPenggunaListrik;
     }
 
-    public void setIdPenggunaListrik(String idPenggunaListrik) {
+    public void setIdPenggunaListrik(Long idPenggunaListrik) {
         this.idPenggunaListrik = idPenggunaListrik;
     }
 
-    public Date getTanggal() {
-        return tanggal;
+    public String getBulan() {
+        return bulan;
     }
 
-    public void setTanggal(Date tanggal) {
-        this.tanggal = tanggal;
+    public void setBulan(String bulan) {
+        this.bulan = bulan;
     }
 
     public Long getBiaya() {
@@ -68,6 +59,14 @@ public class TagihanDto {
         this.kwh = kwh;
     }
 
+    public String getMetodePembayaran() {
+        return metodePembayaran;
+    }
+
+    public void setMetodePembayaran(String metodePembayaran) {
+        this.metodePembayaran = metodePembayaran;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -75,4 +74,6 @@ public class TagihanDto {
     public void setStatus(String status) {
         this.status = status;
     }
+
+
 }
