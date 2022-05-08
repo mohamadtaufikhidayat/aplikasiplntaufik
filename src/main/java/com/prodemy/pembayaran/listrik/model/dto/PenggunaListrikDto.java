@@ -10,9 +10,8 @@ public class PenggunaListrikDto {
     private String kota;
     private String kecamatan;
     private String kelurahan;
-    private String jenisPengguna;
+    private Long idJenis;
     private Long user_id;
-    private Long daya;
 
     public Long getIdPengguna() {
         return idPengguna;
@@ -38,20 +37,12 @@ public class PenggunaListrikDto {
         this.alamat = alamat;
     }
 
-    public String getJenisPengguna() {
-        return jenisPengguna;
+    public Long getIdJenis() {
+        return idJenis;
     }
 
-    public void setJenisPengguna(String jenisPengguna) {
-        this.jenisPengguna = jenisPengguna;
-    }
-
-    public Long getDaya() {
-        return daya;
-    }
-
-    public void setDaya(Long daya) {
-        this.daya = daya;
+    public void setIdJenis(Long idJenis) {
+        this.idJenis = idJenis;
     }
 
     public Long getUser_id() {
@@ -93,8 +84,4 @@ public class PenggunaListrikDto {
     public void setKelurahan(String kelurahan) {
         this.kelurahan = kelurahan;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 52b32ecdee5d332940005f66364861016f5621ec

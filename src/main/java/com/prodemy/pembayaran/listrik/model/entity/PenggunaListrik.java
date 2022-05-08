@@ -21,10 +21,9 @@ public class PenggunaListrik {
     private String kecamatan;
     @Column
     private String kelurahan;
-    @Column
-    private String jenisPengguna;
-    @Column
-    private Long daya;
+    @ManyToOne
+    @JoinColumn(name = "idJenis")
+    private JenisPelanggan idJenis;
 
     @ManyToOne
     @JoinColumn(name="no_penggunaapp", nullable = false)
@@ -55,20 +54,12 @@ public class PenggunaListrik {
         this.alamat = alamat;
     }
 
-    public String getJenisPengguna() {
-        return jenisPengguna;
+    public JenisPelanggan getIdJenis() {
+        return idJenis;
     }
 
-    public void setJenisPengguna(String jenisPengguna) {
-        this.jenisPengguna = jenisPengguna;
-    }
-
-    public Long getDaya() {
-        return daya;
-    }
-
-    public void setDaya(Long daya) {
-        this.daya = daya;
+    public void setIdJenis(JenisPelanggan idJenis) {
+        this.idJenis = idJenis;
     }
 
     public User getUser() {

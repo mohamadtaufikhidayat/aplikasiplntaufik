@@ -1,10 +1,12 @@
 package com.prodemy.pembayaran.listrik.controller;
 
+import com.prodemy.pembayaran.listrik.Repository.JenisPelangganRepo;
 import com.prodemy.pembayaran.listrik.Repository.PenggunaListrikrepo;
 import com.prodemy.pembayaran.listrik.Repository.Userrepo;
 import com.prodemy.pembayaran.listrik.Repository.DataPelRepo;
 import com.prodemy.pembayaran.listrik.model.dto.DefaultResponse;
 import com.prodemy.pembayaran.listrik.model.dto.PenggunaListrikDto;
+import com.prodemy.pembayaran.listrik.model.entity.JenisPelanggan;
 import com.prodemy.pembayaran.listrik.model.entity.User;
 import com.prodemy.pembayaran.listrik.model.entity.PenggunaListrik;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,7 @@ public class PenggunaListrikcontroller {
 
     DataPelRepo repo1;
 
-
+    JenisPelangganRepo jenisPelangganRepo;
     @Autowired
     Userrepo userrepo;
 
@@ -53,8 +55,10 @@ public class PenggunaListrikcontroller {
         pel.setNamaPengguna(dtoP.getNamaPengguna());
         pel.setIdPengguna(dtoP.getIdPengguna());
         pel.setAlamat(dtoP.getAlamat());
-        pel.setDaya(dtoP.getDaya());
-        pel.setJenisPengguna(dtoP.getJenisPengguna());
+        if(jenisPelangganRepo.findById(dtoP.getIdJenis()).isPresent()){
+            JenisPelanggan jenisPelanggan =  jenisPelangganRepo.findById(dtoP.getIdJenis()).get();
+            pel.setIdJenis(jenisPelanggan);
+        }
         pel.setProvinsi(dtoP.getProvinsi());
         pel.setKota(dtoP.getKota());
         pel.setKecamatan(dtoP.getKecamatan());
@@ -73,8 +77,7 @@ public class PenggunaListrikcontroller {
         dto.setNamaPengguna(lis.getNamaPengguna());
         dto.setIdPengguna(lis.getIdPengguna());
         dto.setAlamat(lis.getAlamat());
-        dto.setDaya(lis.getDaya());
-        dto.setJenisPengguna(lis.getJenisPengguna());
+        dto.setIdJenis(lis.getIdJenis().getIdJenis());
         dto.setProvinsi(lis.getProvinsi());
         dto.setKota(lis.getKota());
         dto.setKecamatan(lis.getKecamatan());
@@ -106,9 +109,4 @@ public class PenggunaListrikcontroller {
                 .collect(Collectors.toList());
         return peng;
     }
-<<<<<<< HEAD
 }
-=======
-}
-
->>>>>>> 52b32ecdee5d332940005f66364861016f5621ec
