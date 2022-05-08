@@ -37,7 +37,9 @@ public class Transaksicontroller {
     public DefaultResponse<TransaksiDto> saveTryDefaultres(@RequestBody TransaksiDto transaksiDto){
         Transaksi transaksi=conversiDtoToEntity(transaksiDto);
         DefaultResponse<TransaksiDto>response=new DefaultResponse<>();
-        if((transaksi.getNoTagihan().getStatus()).equals(null)&&transaksi.getNoTagihan().getBiaya()==transaksiDto.getBiaya()&&transaksi.getMetodePembayaran().getNoRekPLN()==transaksiDto.getNoRekeningPLN()){
+        if((transaksi.getNoTagihan().getStatus()).equals(null)
+                &&transaksi.getNoTagihan().getBiaya()==transaksiDto.getBiaya()
+                &&transaksi.getMetodePembayaran().getNoRekPLN()==transaksiDto.getNoRekeningPLN()){
             response.setPesan("transaksi berhasil");
             transaksiDto.setStatusTransaksi("Transaksi Berhasil");
             response.setData(transaksiDto);
