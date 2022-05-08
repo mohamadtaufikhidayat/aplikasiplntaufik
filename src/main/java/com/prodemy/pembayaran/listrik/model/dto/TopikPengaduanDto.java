@@ -2,17 +2,8 @@ package com.prodemy.pembayaran.listrik.model.dto;
 
 
 public class TopikPengaduanDto {
-    private Long codeTopik;
     private String kelompokTopik;
     private String namaTopik;
-
-    public Long getCodeTopik() {
-        return codeTopik;
-    }
-
-    public void setCodeTopik(Long codeTopik) {
-        this.codeTopik = codeTopik;
-    }
 
     public String getKelompokTopik() {
         return kelompokTopik;

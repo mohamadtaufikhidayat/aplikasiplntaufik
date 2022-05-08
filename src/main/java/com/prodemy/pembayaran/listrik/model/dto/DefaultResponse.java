@@ -1,5 +1,9 @@
 package com.prodemy.pembayaran.listrik.model.dto;
 
+import com.prodemy.pembayaran.listrik.model.entity.TopikPengaduan;
+
+import java.util.List;
+
 public class DefaultResponse <T> {
     private String pesan;
     private T data;

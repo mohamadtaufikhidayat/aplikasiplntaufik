@@ -1,14 +1,23 @@
 package com.prodemy.pembayaran.listrik.model.dto;
 
 import com.prodemy.pembayaran.listrik.model.entity.PenggunaListrik;
+import com.prodemy.pembayaran.listrik.model.entity.TopikPengaduan;
 
 public class FormPengaduanDto {
+    private Long IdpenggunaListrik;
     private Long noPengaduan;
     private String alamat;
     private String deskripsi;
-    private byte foto;
-    private Long IdpenggunaListrik;
-//    private Long codeTopik;
+    private String status;
+    private String kodeTopik;
+
+    public String getKodeTopik() {
+        return kodeTopik;
+    }
+
+    public void setKodeTopik(String kodeTopik) {
+        this.kodeTopik = kodeTopik;
+    }
 
     public Long getNoPengaduan() {
         return noPengaduan;
@@ -34,14 +43,6 @@ public class FormPengaduanDto {
         this.deskripsi = deskripsi;
     }
 
-    public byte getFoto() {
-        return foto;
-    }
-
-    public void setFoto(byte foto) {
-        this.foto = foto;
-    }
-
     public Long getIdpenggunaListrik() {
         return IdpenggunaListrik;
     }
@@ -50,11 +51,13 @@ public class FormPengaduanDto {
         IdpenggunaListrik = idpenggunaListrik;
     }
 
-//    public Long getCodeTopik() {
-//        return codeTopik;
-//    }
-//
-//    public void setCodeTopik(Long codeTopik) {
-//        this.codeTopik = codeTopik;
-//    }
+    public String getStatus() {
+        return status;
+    }
+
+    public String setStatus(String status) {
+        this.status = status;
+        return status;
+    }
+
 }
