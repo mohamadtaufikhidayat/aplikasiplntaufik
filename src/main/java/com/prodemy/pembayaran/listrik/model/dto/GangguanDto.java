@@ -1,7 +1,6 @@
 package com.prodemy.pembayaran.listrik.model.dto;
 
 public class GangguanDto {
-    Long idPengguna;
     Long noGangguan;
     String lokasi;
     String status;
@@ -13,14 +12,6 @@ public class GangguanDto {
 
     public void setNoGangguan(Long noGangguan) {
         this.noGangguan = noGangguan;
-    }
-
-    public Long getIdPengguna() {
-        return idPengguna;
-    }
-
-    public void setIdPengguna(Long idPengguna) {
-        this.idPengguna = idPengguna;
     }
 
     public String getLokasi() {

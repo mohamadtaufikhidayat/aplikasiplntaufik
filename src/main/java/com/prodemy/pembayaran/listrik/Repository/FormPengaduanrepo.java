@@ -21,4 +21,7 @@ public interface FormPengaduanrepo extends JpaRepository<FormPengaduan,Long> {
     int updateStatus2(Long noPengaduan);
 
     List<FormPengaduan> findAllByNoPengaduan (Long noPengaduan);
+    Optional<FormPengaduan> findByNoPengaduan (Long noPengaduan);
+//    Long findAByNoPengaduan (Long noPengaduan);
+    Optional<FormPengaduan> getByNoPengaduan (Long noPengaduan);
 }

@@ -2,7 +2,6 @@ package com.prodemy.pembayaran.listrik.model.dto;
 
 public class AssignmentDto {
     private Long idPetugas;
-    private String namaPetugas;
     private Long noPengaduan;
 
     public Long getIdPetugas() {
@@ -11,14 +10,6 @@ public class AssignmentDto {
 
     public void setIdPetugas(Long idPetugas) {
         this.idPetugas = idPetugas;
-    }
-
-    public String getNamaPetugas() {
-        return namaPetugas;
-    }
-
-    public void setNamaPetugas(String namaPetugas) {
-        this.namaPetugas = namaPetugas;
     }
 
     public Long getNoPengaduan() {

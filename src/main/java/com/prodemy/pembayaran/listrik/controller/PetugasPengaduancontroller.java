@@ -3,14 +3,12 @@ package com.prodemy.pembayaran.listrik.controller;
 import com.prodemy.pembayaran.listrik.Repository.Assignmentrepo;
 import com.prodemy.pembayaran.listrik.Repository.DataPelRepo;
 import com.prodemy.pembayaran.listrik.Repository.FormPengaduanrepo;
+import com.prodemy.pembayaran.listrik.Repository.PetugasPengaduanrepo;
 import com.prodemy.pembayaran.listrik.Service.PengaduanService;
 import com.prodemy.pembayaran.listrik.model.dto.AssignmentDto;
 import com.prodemy.pembayaran.listrik.model.dto.DefaultResponse;
 import com.prodemy.pembayaran.listrik.model.dto.FormPengaduanDto;
-import com.prodemy.pembayaran.listrik.model.entity.Assignment;
-import com.prodemy.pembayaran.listrik.model.entity.FormPengaduan;
-import com.prodemy.pembayaran.listrik.model.entity.PenggunaListrik;
-import com.prodemy.pembayaran.listrik.model.entity.TopikPengaduan;
+import com.prodemy.pembayaran.listrik.model.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,16 +19,18 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/petugas-pengaduan")
 public class PetugasPengaduancontroller {
+    private final PetugasPengaduanrepo petugasPengaduanrepo;
     private final Assignmentrepo assignmentrepo;
     private final PengaduanService pengaduanService;
     private final FormPengaduanrepo formPengaduanrepo;
     private final DataPelRepo penggunaListrikrepo;
 
-    public PetugasPengaduancontroller(FormPengaduanrepo formPengaduanrepo, DataPelRepo penggunaListrikrepo, PengaduanService pengaduanService, Assignmentrepo assignmentrepo) {
+    public PetugasPengaduancontroller(FormPengaduanrepo formPengaduanrepo, DataPelRepo penggunaListrikrepo, PengaduanService pengaduanService, Assignmentrepo assignmentrepo, PetugasPengaduanrepo petugasPengaduanrepo) {
         this.formPengaduanrepo = formPengaduanrepo;
         this.penggunaListrikrepo = penggunaListrikrepo;
         this.pengaduanService = pengaduanService;
         this.assignmentrepo = assignmentrepo;
+        this.petugasPengaduanrepo = petugasPengaduanrepo;
     }
     @PutMapping("/tindak-lanjut/{noPengaduan}")
     public int update (@PathVariable Long noPengaduan){
@@ -89,49 +89,6 @@ public class PetugasPengaduancontroller {
         entity.setDeskripsi(dto.getDeskripsi());
         entity.setStatus("Pengaduan selesai, masalah telah diatasi");
         return entity;
-    }
-
-//    private FormPengaduanDto convertToDto(FormPengaduan entity){
-//        FormPengaduanDto dto = new FormPengaduanDto();
-//        dto.setNoPengaduan(entity.getNoPengaduan());
-//        dto.setAlamat(entity.getAlamat());
-//        dto.setDeskripsi(entity.getDeskripsi());
-//        dto.setStatus("Sedang ditindak-lanjuti");
-//        return dto;
-//    }
-//    private FormPengaduanDto convertToDto2(FormPengaduan entity){
-//        FormPengaduanDto dto = new FormPengaduanDto();
-//        dto.setNoPengaduan(entity.getNoPengaduan());
-//        dto.setAlamat(entity.getAlamat());
-//        dto.setDeskripsi(entity.getDeskripsi());
-//        dto.setStatus("Pengaduan selesai, masalah telah diatasi");
-//        return dto;
-//    }
-    @PostMapping("/pelimpahan-pengaduan")
-    public DefaultResponse<AssignmentDto> insertForm (@RequestBody AssignmentDto dto){
-        DefaultResponse<AssignmentDto> response = new DefaultResponse<>();
-        Assignment entity = convertToEntity(dto);
-        Optional<Assignment> optional = assignmentrepo.findByIdPetugas(dto.getIdPetugas());
-        Optional<FormPengaduan> optional1 = formPengaduanrepo.findById(dto.getNoPengaduan());
-        if(optional.isPresent() && optional1.isPresent()){
-            assignmentrepo.save(entity);
-            response.setPesan("Pengaduan berhasil dilimpahkan kepada petugas");
-            response.setData(dto);
-        } else{
-            response.setPesan("Nomor Id Petugas Atau Nomor Pengaduan Salah!");
-        }
-        return response;
-    }
-    private Assignment convertToEntity(AssignmentDto dto){
-        Assignment assignment = new Assignment();
-        if(formPengaduanrepo.findById(dto.getNoPengaduan()).isPresent()){
-            FormPengaduan formPengaduan =  formPengaduanrepo.findById(dto.getNoPengaduan()).get();
-            assignment.setNoPengaduan(formPengaduan);
-        }
-        assignment.setIdPetugas(dto.getIdPetugas());
-        assignment.setNamaPetugas(dto.getNamaPetugas());
-
-        return assignment;
     }
 
 }

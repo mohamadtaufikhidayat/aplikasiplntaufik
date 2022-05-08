@@ -33,7 +33,18 @@ public class FormPengaduan {
     private String status;
     @ManyToOne
     @JoinColumn(name = "KodeTopik")
-    private TopikPengaduan kodeTopik;
+    public TopikPengaduan kodeTopik;
+
+//    @Enumerated(EnumType.ORDINAL)
+//    public NamaTopik namaTopik;
+//
+//    public NamaTopik getNamaTopik() {
+//        return namaTopik;
+//    }
+//
+//    public void setNamaTopik(NamaTopik namaTopik) {
+//        this.namaTopik = namaTopik;
+//    }
 
     public TopikPengaduan getKodeTopik() {
         return kodeTopik;

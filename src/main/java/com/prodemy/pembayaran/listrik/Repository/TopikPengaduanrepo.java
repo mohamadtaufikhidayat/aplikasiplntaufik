@@ -17,5 +17,7 @@ public interface TopikPengaduanrepo extends JpaRepository<TopikPengaduan,Long> {
 
         @Query("select r from TopikPengaduan r where r.codeTopik = :codeTopik")
         Optional<TopikPengaduan> findByCodeTopik(@PathParam("codeTopik")String codeTopik);
+//        @Query("select r from TopikPengaduan r where r.namaTopik = :namaTopik")
+//        Optional<TopikPengaduan> findByNamaTopik(@PathParam("namaTopik")String namaTopik);
 }
 
