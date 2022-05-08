@@ -7,28 +7,28 @@ import javax.persistence.*;
 public class TopikPengaduan {
     @Id
     @Column
-    private Long codeTopik;
+    private String codeTopik;
     @Column
     private String kelompokTopik;
     @Column
     private String namaTopik;
-    @ManyToOne
-    @JoinColumn(name="noPengaduan")
-    private FormPengaduan formPengaduan;
+//    @ManyToOne
+//    @JoinColumn(name="noPengaduan")
+//    private FormPengaduan formPengaduan;
 
-    public FormPengaduan getFormPengaduan() {
-        return formPengaduan;
-    }
+//    public FormPengaduan getFormPengaduan() {
+//        return formPengaduan;
+//    }
+//
+//    public void setFormPengaduan(FormPengaduan formPengaduan) {
+//        this.formPengaduan = formPengaduan;
+//    }
 
-    public void setFormPengaduan(FormPengaduan formPengaduan) {
-        this.formPengaduan = formPengaduan;
-    }
-
-    public Long getCodeTopik() {
+    public String getCodeTopik() {
         return codeTopik;
     }
 
-    public void setCodeTopik(Long codeTopik) {
+    public void setCodeTopik(String codeTopik) {
         this.codeTopik = codeTopik;
     }
 

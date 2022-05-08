@@ -2,6 +2,7 @@ package com.prodemy.pembayaran.listrik.controller;
 
 import com.prodemy.pembayaran.listrik.Repository.PenggunaListrikrepo;
 import com.prodemy.pembayaran.listrik.Repository.Userrepo;
+import com.prodemy.pembayaran.listrik.Repository.DataPelRepo;
 import com.prodemy.pembayaran.listrik.model.dto.DefaultResponse;
 import com.prodemy.pembayaran.listrik.model.dto.PenggunaListrikDto;
 import com.prodemy.pembayaran.listrik.model.entity.User;
@@ -18,7 +19,11 @@ import java.util.stream.Collectors;
 public class PenggunaListrikcontroller {
 
     @Autowired
+
     PenggunaListrikrepo repo;
+
+    DataPelRepo repo1;
+
 
     @Autowired
     Userrepo userrepo;

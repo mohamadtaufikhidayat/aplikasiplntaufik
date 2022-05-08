@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @RestController
@@ -23,20 +22,19 @@ public class TopikPengaduancontroller {
         this.topikPengaduanrepo = topikPengaduanrepo;
     }
 
-    @GetMapping("/list-topik-berdasarkan-kelompok/{kelompokTopik}")
-    public List<TopikPengaduanDto> getListTopikBerdasarkanKelompok(@PathVariable String kelompokTopik){
+    @GetMapping("/list-kelompok-topik")
+    public List<TopikPengaduanDto> getListKelompokTopik2(){
         List<TopikPengaduanDto> list = new ArrayList<>();
-        for(TopikPengaduan x: topikPengaduanrepo.findAllByKelompokTopik(kelompokTopik)){
-            list.add(convertEntityToDto2(x));
+        for(TopikPengaduan x: topikPengaduanrepo.findByCodeTopik()){
+            list.add(convertEntityToDto1(x));
         }
         return list;
     }
-
-    @GetMapping("/list-kelompok-topik")
-    public List<TopikPengaduanDto> getListPadam(){
+    @GetMapping("/list-topik-berdasarkan-kelompok/{kelompokTopik}")
+    public List<TopikPengaduanDto> getListTopikBerdasarkanKelompok(@PathVariable String kelompokTopik){
         List<TopikPengaduanDto> list = new ArrayList<>();
-        for(TopikPengaduan x: topikPengaduanrepo.findAll()){
-            list.add(convertEntityToDto1(x));
+        for(TopikPengaduan x: topikPengaduanrepo.findAllByKelompokTopikIgnoreCase(kelompokTopik)){
+            list.add(convertEntityToDto2(x));
         }
         return list;
     }
@@ -48,6 +46,14 @@ public class TopikPengaduancontroller {
         }
         return list;
     }
+    @GetMapping("/list-containing-topik/{namaTopik}")
+    public List<TopikPengaduanDto> getListTopikContaining(@PathVariable String namaTopik){
+        List<TopikPengaduanDto> list = new ArrayList<>();
+        for(TopikPengaduan x: topikPengaduanrepo.findAllByNamaTopikIsContainingIgnoreCase(namaTopik)){
+            list.add(convertEntityToDto3(x));
+        }
+        return list;
+    }
 
      public TopikPengaduanDto convertEntityToDto1 (TopikPengaduan entity){
         TopikPengaduanDto dto = new TopikPengaduanDto();
@@ -56,6 +62,12 @@ public class TopikPengaduancontroller {
     }
     public TopikPengaduanDto convertEntityToDto2 (TopikPengaduan entity){
         TopikPengaduanDto dto = new TopikPengaduanDto();
+        dto.setNamaTopik(entity.getNamaTopik());
+        return dto;
+    }
+    public TopikPengaduanDto convertEntityToDto3 (TopikPengaduan entity){
+        TopikPengaduanDto dto = new TopikPengaduanDto();
+        dto.setKelompokTopik(entity.getKelompokTopik());
         dto.setNamaTopik(entity.getNamaTopik());
         return dto;
     }
