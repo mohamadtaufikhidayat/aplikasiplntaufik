@@ -19,6 +19,6 @@ public interface DataPelRepo extends JpaRepository<PenggunaListrik,Long> {
 
     Optional<PenggunaListrik> findPenggunaListrikByAlamat(String alamat);
 
-    @Query("select r.alamat from PenggunaListrik r where r.idPengguna = :idPengguna")
-    Optional<PenggunaListrik> findPenggunaListriksByIdPengguna (@PathParam("idPelanggan") Long idPengguna);
+    @Query("select r from PenggunaListrik r where r.idPengguna = :idPengguna")
+    Optional<PenggunaListrik> findPenggunaListriksByIdPengguna (@PathParam("idPengguna") Long idPengguna);
 }

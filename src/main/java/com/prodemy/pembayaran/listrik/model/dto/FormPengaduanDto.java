@@ -1,5 +1,8 @@
 package com.prodemy.pembayaran.listrik.model.dto;
 
+import com.prodemy.pembayaran.listrik.model.entity.PenggunaListrik;
+import com.prodemy.pembayaran.listrik.model.entity.TopikPengaduan;
+
 public class FormPengaduanDto {
     private Long IdpenggunaListrik;
     private Long noPengaduan;

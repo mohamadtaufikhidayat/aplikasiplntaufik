@@ -33,7 +33,7 @@ public class FormPengaduancontroller {
     public DefaultResponse<FormPengaduanDto> insertForm(@RequestBody FormPengaduanDto dto) {
         DefaultResponse<FormPengaduanDto> response = new DefaultResponse<>();
         FormPengaduan entity = convertToEntity(dto);
-        Optional<PenggunaListrik> optional = penggunaListrikrepo.findById(dto.getIdpenggunaListrik());
+        Optional<PenggunaListrik> optional = penggunaListrikrepo.findByIdPengguna(dto.getIdpenggunaListrik());
         Optional<TopikPengaduan> optional2 = topikPengaduanrepo.findByCodeTopik(dto.getKodeTopik());
         if (optional.isPresent() && optional2.isPresent()) {
             formPengaduanrepo.save(entity);
@@ -44,6 +44,7 @@ public class FormPengaduancontroller {
         }
         return response;
     }
+
 
     private FormPengaduan convertToEntity(FormPengaduanDto dto) {
         FormPengaduan pengaduan = new FormPengaduan();
@@ -57,10 +58,45 @@ public class FormPengaduancontroller {
         }
         pengaduan.setNoPengaduan(dto.getNoPengaduan());
         pengaduan.setDeskripsi(dto.getDeskripsi());
-        pengaduan.setAlamat(pengaduan.getIdpenggunaListrik().getAlamat());
+        try {
+            //  Block of code to try
+            pengaduan.setAlamat(pengaduan.getIdpenggunaListrik().getAlamat());
+        }
+        catch(Exception e) {
+            //  Block of code to handle errors
+            String a = "Nomor meteran salah!";
+            System.out.println(a);
+        }
         pengaduan.setStatus(dto.setStatus("Pengaduan telah dibuat"));
 
         return pengaduan;
+    }
+    @PostMapping("isi-form3")
+    public DefaultResponse<FormPengaduanDto> insertForm2(@RequestBody FormPengaduanDto dto) {
+        DefaultResponse<FormPengaduanDto> response = new DefaultResponse<>();
+        FormPengaduan entity = convertToEntity(dto);
+        FormPengaduanDto dto1 =convertToDto(entity);
+        Optional<PenggunaListrik> optional = penggunaListrikrepo.findById(dto.getIdpenggunaListrik());
+        Optional<TopikPengaduan> optional2 = topikPengaduanrepo.findByCodeTopik(dto.getKodeTopik());
+        if (optional.isPresent() && optional2.isPresent()) {
+            formPengaduanrepo.save(entity);
+            response.setPesan("Pengaduan berhasil dibuat, Kami akan segera tindaklanjuti");
+            response.setData(dto1);
+        } else {
+            response.setPesan("Nomor Meteran Atau Kode Topik Salah!");
+        }
+        return response;
+    }
+
+    private FormPengaduanDto convertToDto(FormPengaduan entity) {
+        FormPengaduanDto dto = new FormPengaduanDto();
+        dto.setNoPengaduan(entity.getNoPengaduan());
+        dto.setAlamat(entity.getAlamat());
+//        dto.setIdpenggunaListrik(entity.getIdpenggunaListrik());
+//        dto.setKodeTopik((entity.getKodeTopik()));
+        dto.setStatus(entity.getStatus());
+        dto.setDeskripsi(entity.getDeskripsi());
+        return dto;
     }
 
 }
