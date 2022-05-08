@@ -24,7 +24,6 @@ public class TopikPengaduancontroller {
 
     @GetMapping("/list-kelompok-topik")
     public List<TopikPengaduanDto> getListKelompokTopik2(){
-//        List<TopikPengaduan> list1 = topikPengaduanrepo.findByCodeTopik();
         List<TopikPengaduanDto> list = new ArrayList<>();
         for(TopikPengaduan x: topikPengaduanrepo.findByCodeTopik()){
             list.add(convertEntityToDto1(x));
@@ -34,7 +33,7 @@ public class TopikPengaduancontroller {
     @GetMapping("/list-topik-berdasarkan-kelompok/{kelompokTopik}")
     public List<TopikPengaduanDto> getListTopikBerdasarkanKelompok(@PathVariable String kelompokTopik){
         List<TopikPengaduanDto> list = new ArrayList<>();
-        for(TopikPengaduan x: topikPengaduanrepo.findAllByKelompokTopik(kelompokTopik)){
+        for(TopikPengaduan x: topikPengaduanrepo.findAllByKelompokTopikIgnoreCase(kelompokTopik)){
             list.add(convertEntityToDto2(x));
         }
         return list;
@@ -47,6 +46,14 @@ public class TopikPengaduancontroller {
         }
         return list;
     }
+    @GetMapping("/list-containing-topik/{namaTopik}")
+    public List<TopikPengaduanDto> getListTopikContaining(@PathVariable String namaTopik){
+        List<TopikPengaduanDto> list = new ArrayList<>();
+        for(TopikPengaduan x: topikPengaduanrepo.findAllByNamaTopikIsContainingIgnoreCase(namaTopik)){
+            list.add(convertEntityToDto3(x));
+        }
+        return list;
+    }
 
      public TopikPengaduanDto convertEntityToDto1 (TopikPengaduan entity){
         TopikPengaduanDto dto = new TopikPengaduanDto();
@@ -55,6 +62,12 @@ public class TopikPengaduancontroller {
     }
     public TopikPengaduanDto convertEntityToDto2 (TopikPengaduan entity){
         TopikPengaduanDto dto = new TopikPengaduanDto();
+        dto.setNamaTopik(entity.getNamaTopik());
+        return dto;
+    }
+    public TopikPengaduanDto convertEntityToDto3 (TopikPengaduan entity){
+        TopikPengaduanDto dto = new TopikPengaduanDto();
+        dto.setKelompokTopik(entity.getKelompokTopik());
         dto.setNamaTopik(entity.getNamaTopik());
         return dto;
     }

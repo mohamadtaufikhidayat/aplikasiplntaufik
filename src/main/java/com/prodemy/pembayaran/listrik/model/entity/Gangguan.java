@@ -30,7 +30,7 @@ public class Gangguan {
     private Date createDate = new Date(System.currentTimeMillis());
 
     @Column(name = "status")
-    private String status;
+    private Boolean status;
 
     @Column(name = "deskripsi")
     private String deskripsi;
@@ -59,11 +59,11 @@ public class Gangguan {
         this.createDate = createDate;
     }
 
-    public String getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 

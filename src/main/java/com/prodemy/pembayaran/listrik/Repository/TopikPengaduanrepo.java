@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TopikPengaduanrepo extends JpaRepository<TopikPengaduan,Long> {
-        List<TopikPengaduan> findAllByKelompokTopik(String kelompokTopik);
+        List<TopikPengaduan> findAllByKelompokTopikIgnoreCase(String kelompokTopik);
+        List<TopikPengaduan> findAllByNamaTopikIsContainingIgnoreCase(String namaTopik);
 
         @Query(value = "select t from TopikPengaduan t where t.codeTopik like '%1' ", nativeQuery = false)
         List<TopikPengaduan> findByCodeTopik();

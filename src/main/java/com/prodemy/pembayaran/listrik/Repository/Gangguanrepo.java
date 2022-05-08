@@ -14,17 +14,17 @@ public interface Gangguanrepo extends JpaRepository<Gangguan, Long> {
     List<Gangguan> findByNoGangguan (Long noGangguan);
     List<Gangguan> findAllByNoGangguan (Long noGangguan);
     @Modifying
-    @Query("UPDATE Gangguan f SET f.status = 'Gangguan telah selesai' WHERE f.noGangguan =:noGangguan ")
+    @Query("UPDATE Gangguan f SET f.status = false WHERE f.noGangguan =:noGangguan ")
     int updateStatus (Long noGangguan);
 
-    @Query("select t.status from Gangguan t where t.status like '%selesai%' ")
-    List<Gangguan> findByStatus ();
+//    @Query("select t.status from Gangguan t where t.status like '%selesai%' ")
+//    List<Gangguan> findByStatus ();
 
-    List<Gangguan> findByLokasiEqualsIgnoreCase (String lokasi);
+    List<Gangguan> findByLokasiEqualsIgnoreCaseAndStatusIsTrue (String lokasi);
 
-    @Query("select t.status from Gangguan t where t.status = 'gangguan sedang berlansung' and t.lokasi = :lokasi")
+    @Query("select t.status from Gangguan t where t.status = true and t.lokasi = :lokasi")
     Optional<Gangguan> findByStatusAndLokasiEqualsIgnoreCase (@PathParam("lokasi") String lokasi);
 
-    @Query("select t from Gangguan t where t.status = 'gangguan sedang berlansung' and t.lokasi = :lokasi")
+    @Query("select t from Gangguan t where t.status = true and t.lokasi = :lokasi")
     List<Gangguan> findByStatusAndLokasi (@PathParam("lokasi") String lokasi);
 }

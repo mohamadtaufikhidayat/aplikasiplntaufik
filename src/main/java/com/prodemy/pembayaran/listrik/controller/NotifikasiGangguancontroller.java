@@ -49,58 +49,28 @@ public class NotifikasiGangguancontroller {
         }
         return defaultResponse;
     }
-    @GetMapping("/gangguan/{noGangguan}/{alamat}")
-    public DefaultResponse<Gangguan> notification(@PathVariable Long noGangguan,
-                                                  @PathVariable String alamat){
-        DefaultResponse<Gangguan> response = new DefaultResponse<>();
-        GangguanDto dto = new GangguanDto();
-        Gangguan entity =convertToEntity(dto);
-        List<PenggunaListrik> list = new ArrayList<>();
-        for(PenggunaListrik x: dataPelRepo.findByAlamat(alamat)){
-            list.add(x);
-        }
-        if(list.isEmpty()){
-            response.setPesan("Alamat salah! Silahkan masukkan Nama Kecamatan, Kota, dan Provinsi");
-        } else{
-            response.setPesan("Notifikasi terkirim");
-            response.setData(entity);
-        }
-        return response;
-    }
     @GetMapping("/gangguan7/{lokasi}")
     public DefaultResponse<List<Gangguan>> gangguan (@PathVariable String lokasi){
         DefaultResponse<List<Gangguan>> response = new DefaultResponse<>();
         List<Gangguan> entity = new ArrayList<>();
         Optional<Gangguan> optional = gangguanrepo.findByStatusAndLokasiEqualsIgnoreCase(lokasi);
-//        for(Gangguan x: gangguanrepo.findByLokasiEqualsIgnoreCase(lokasi)){
-//            entity.add(x);
-//        }
-//        for(Gangguan x: gangguanrepo.findByStatus()){
-//            entity.remove(x);
-//        }
+        for(Gangguan x: gangguanrepo.findByLokasiEqualsIgnoreCaseAndStatusIsTrue(lokasi)){
+            entity.add(x);
+        }
         if (optional.isPresent()) {
             response.setPesan("Sedang ada gangguan pada lokasi : "+ lokasi);
-//            response.setData(entity);
+            response.setData(entity);
         } else {
           response.setPesan ("Tidak ada gangguan pada lokasi : "+ lokasi);
         }
         return response;
     }
 
-//    private GangguanDto convertToDto(Gangguan entity) {
-//        GangguanDto dto = new GangguanDto();
-////        dto.setNoGangguan(entity.getNoGangguan());
-////        dto.setLokasi(entity.getLokasi());
-////        dto.setDeskripsi(entity.getDeskripsi());
-//        dto.setStatus(entity.getStatus());
-//        return dto;
-//    }
-
     private Gangguan convertToEntity(GangguanDto dto) {
         Gangguan entity = new Gangguan();
         entity.setNoGangguan(dto.getNoGangguan());
         entity.setLokasi(dto.getLokasi());
-        entity.setStatus("gangguan sedang berlansung");
+        entity.setStatus(true);
         entity.setDeskripsi(dto.getDeskripsi());
         return entity;
     }
@@ -143,7 +113,7 @@ public class NotifikasiGangguancontroller {
         Gangguan entity = new Gangguan();
         entity.setNoGangguan(dto.getNoGangguan());
         entity.setLokasi(dto.getLokasi());
-        entity.setStatus("gangguan telah selesai");
+        entity.setStatus(false);
         entity.setDeskripsi(dto.getDeskripsi());
         return entity;
     }
