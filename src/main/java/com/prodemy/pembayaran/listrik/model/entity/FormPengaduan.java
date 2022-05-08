@@ -20,20 +20,18 @@ public class FormPengaduan {
             }
     )
     private Long noPengaduan;
-    @ManyToOne
-    @JoinColumn(name="IdPenggunaListrik")
-    private PenggunaListrik IdpenggunaListrik;
     @Column
     private String alamat;
     @Column
     private String deskripsi;
     @Column
-    private byte foto;
-    @Column
     private String status;
     @ManyToOne
     @JoinColumn(name = "KodeTopik")
     public TopikPengaduan kodeTopik;
+    @ManyToOne
+    @JoinColumn(name="IdPenggunaListrik")
+    private PenggunaListrik IdpenggunaListrik;
 
 //    @Enumerated(EnumType.ORDINAL)
 //    public NamaTopik namaTopik;
@@ -76,14 +74,6 @@ public class FormPengaduan {
 
     public void setDeskripsi(String deskripsi) {
         this.deskripsi = deskripsi;
-    }
-
-    public byte getFoto() {
-        return foto;
-    }
-
-    public void setFoto(byte foto) {
-        this.foto = foto;
     }
 
     public PenggunaListrik getIdpenggunaListrik() {

@@ -11,10 +11,14 @@ import java.util.Optional;
 public interface DataPelRepo extends JpaRepository<PenggunaListrik,Long> {
 
     @Query("select r from PenggunaListrik r where r.idPengguna = :idPengguna")
-    Optional<PenggunaListrik> findByIdPengguna(@PathParam("idPelanggan")Long idPengguna);
+    Optional<PenggunaListrik> findByIdPengguna(@PathParam("idPelanggan") Long idPengguna);
 
-    Optional<PenggunaListrik> findAllByAlamat (String alamat);
-    List<PenggunaListrik> findByAlamat (String alamat);
+    Optional<PenggunaListrik> findAllByAlamat(String alamat);
 
-    Optional<PenggunaListrik> findPenggunaListrikByAlamat (String alamat);
+    List<PenggunaListrik> findByAlamat(String alamat);
+
+    Optional<PenggunaListrik> findPenggunaListrikByAlamat(String alamat);
+
+    @Query("select r.alamat from PenggunaListrik r where r.idPengguna = :idPengguna")
+    Optional<PenggunaListrik> findPenggunaListriksByIdPengguna (@PathParam("idPelanggan") Long idPengguna);
 }

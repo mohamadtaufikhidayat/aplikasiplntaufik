@@ -49,8 +49,10 @@ public class Assignmentcontroller {
             FormPengaduan formPengaduan =  formPengaduanrepo.findById(dto.getNoPengaduan()).get();
             assignment.setNoPengaduan(formPengaduan);
         }
-        assignment.setIdPetugas(dto.getIdPetugas());
-
+        if(petugasPengaduanrepo.findById(dto.getIdPetugas()).isPresent()){
+            PetugasPengaduan petugas =  petugasPengaduanrepo.findById(dto.getIdPetugas()).get();
+            assignment.setIdPetugas(petugas);
+        }
         return assignment;
     }
 }

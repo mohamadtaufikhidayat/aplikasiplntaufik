@@ -12,17 +12,17 @@ public class TopikPengaduan {
     private String kelompokTopik;
     @Column
     private String namaTopik;
-    @ManyToOne
-    @JoinColumn(name="noPengaduan")
-    private FormPengaduan formPengaduan;
+//    @ManyToOne
+//    @JoinColumn(name="noPengaduan")
+//    private FormPengaduan formPengaduan;
 
-    public FormPengaduan getFormPengaduan() {
-        return formPengaduan;
-    }
-
-    public void setFormPengaduan(FormPengaduan formPengaduan) {
-        this.formPengaduan = formPengaduan;
-    }
+//    public FormPengaduan getFormPengaduan() {
+//        return formPengaduan;
+//    }
+//
+//    public void setFormPengaduan(FormPengaduan formPengaduan) {
+//        this.formPengaduan = formPengaduan;
+//    }
 
     public String getCodeTopik() {
         return codeTopik;

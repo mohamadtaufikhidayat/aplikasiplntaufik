@@ -49,7 +49,7 @@ public class NotifikasiGangguancontroller {
         }
         return defaultResponse;
     }
-    @GetMapping("/gangguan7/{lokasi}")
+    @GetMapping("/informasi-gangguan/{lokasi}")
     public DefaultResponse<List<Gangguan>> gangguan (@PathVariable String lokasi){
         DefaultResponse<List<Gangguan>> response = new DefaultResponse<>();
         List<Gangguan> entity = new ArrayList<>();
@@ -64,31 +64,6 @@ public class NotifikasiGangguancontroller {
           response.setPesan ("Tidak ada gangguan pada lokasi : "+ lokasi);
         }
         return response;
-    }
-
-    private Gangguan convertToEntity(GangguanDto dto) {
-        Gangguan entity = new Gangguan();
-        entity.setNoGangguan(dto.getNoGangguan());
-        entity.setLokasi(dto.getLokasi());
-        entity.setStatus(true);
-        entity.setDeskripsi(dto.getDeskripsi());
-        return entity;
-    }
-    @GetMapping("/gangguan2/{alamat}")
-    public DefaultResponse<List<PenggunaListrik>> getListPengguna(@PathVariable String alamat){
-        List<PenggunaListrik> list = new ArrayList<>();
-        DefaultResponse<List<PenggunaListrik>> defaultResponse = new DefaultResponse<>();
-        for(PenggunaListrik x: dataPelRepo.findByAlamat(alamat)){
-            list.add(x);
-        }
-        if(list.isEmpty()){
-            defaultResponse.setPesan("Alamat salah! Silahkan masukkan Nama Kecamatan, Kota, dan Provinsi");
-        } else{
-            defaultResponse.setPesan("Ada gangguan listrik di daerah anda! Harap sabar menunngu, perbaikan akan segera dilakukan");
-            defaultResponse.setData(list);
-        }
-
-        return defaultResponse;
     }
 
     @PostMapping ("/tindak-lanjut")
@@ -108,6 +83,14 @@ public class NotifikasiGangguancontroller {
         }
         return response;
     }
+    private Gangguan convertToEntity(GangguanDto dto) {
+        Gangguan entity = new Gangguan();
+        entity.setNoGangguan(dto.getNoGangguan());
+        entity.setLokasi(dto.getLokasi());
+        entity.setStatus(true);
+        entity.setDeskripsi(dto.getDeskripsi());
+        return entity;
+    }
 
     private Gangguan convertToEntity2(GangguanDto dto) {
         Gangguan entity = new Gangguan();
@@ -117,6 +100,4 @@ public class NotifikasiGangguancontroller {
         entity.setDeskripsi(dto.getDeskripsi());
         return entity;
     }
-
-
 }

@@ -1,11 +1,10 @@
 package com.prodemy.pembayaran.listrik.model.dto;
 
 public class FormPengaduanDto {
+    private Long IdpenggunaListrik;
     private Long noPengaduan;
     private String alamat;
     private String deskripsi;
-    private byte foto;
-    private Long IdpenggunaListrik;
     private String status;
     private String kodeTopik;
 
@@ -39,14 +38,6 @@ public class FormPengaduanDto {
 
     public void setDeskripsi(String deskripsi) {
         this.deskripsi = deskripsi;
-    }
-
-    public byte getFoto() {
-        return foto;
-    }
-
-    public void setFoto(byte foto) {
-        this.foto = foto;
     }
 
     public Long getIdpenggunaListrik() {

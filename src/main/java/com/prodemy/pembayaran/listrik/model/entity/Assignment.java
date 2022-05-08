@@ -10,17 +10,26 @@ public class Assignment {
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long no;
-    @Column
-    private Long idPetugas;
+    @ManyToOne
+    @JoinColumn(name = "idPetugas")
+    private PetugasPengaduan idPetugas;
     @ManyToOne
     @JoinColumn(name = "no_pengaduan")
     private FormPengaduan noPengaduan;
 
-    public Long getIdPetugas() {
+    public Long getNo() {
+        return no;
+    }
+
+    public void setNo(Long no) {
+        this.no = no;
+    }
+
+    public PetugasPengaduan getIdPetugas() {
         return idPetugas;
     }
 
-    public void setIdPetugas(Long idPetugas) {
+    public void setIdPetugas(PetugasPengaduan idPetugas) {
         this.idPetugas = idPetugas;
     }
 
