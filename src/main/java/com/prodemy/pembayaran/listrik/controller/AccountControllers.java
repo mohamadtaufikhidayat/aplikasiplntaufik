@@ -4,13 +4,8 @@ import com.prodemy.pembayaran.listrik.Repository.AccountRepo;
 import com.prodemy.pembayaran.listrik.Repository.Saldorepo;
 import com.prodemy.pembayaran.listrik.Service.SaldoService;
 import com.prodemy.pembayaran.listrik.model.dto.AccountDto;
-import com.prodemy.pembayaran.listrik.model.dto.AdminDto;
 import com.prodemy.pembayaran.listrik.model.dto.DefaultResponse;
-import com.prodemy.pembayaran.listrik.model.dto.UserDto;
 import com.prodemy.pembayaran.listrik.model.entity.Account;
-import com.prodemy.pembayaran.listrik.model.entity.Admin;
-import com.prodemy.pembayaran.listrik.model.entity.Saldo;
-import com.prodemy.pembayaran.listrik.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -68,6 +63,4 @@ public class AccountControllers {
 
         return dto;
     }
-
-
 }
