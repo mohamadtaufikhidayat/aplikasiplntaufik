@@ -29,7 +29,7 @@ public class UbahDaya {
     @Column
     private String jenisPenggunaubah;
     @Column
-    private Long dayaBaru;
+    private String dayaBaru;
     @Column
     private String kontak;
     @Column
@@ -59,11 +59,11 @@ public class UbahDaya {
         this.jenisPenggunaubah = jenisPenggunaubah;
     }
 
-    public Long getDayaBaru() {
+    public String getDayaBaru() {
         return dayaBaru;
     }
 
-    public void setDayaBaru(Long dayaBaru) {
+    public void setDayaBaru(String dayaBaru) {
         this.dayaBaru = dayaBaru;
     }
 

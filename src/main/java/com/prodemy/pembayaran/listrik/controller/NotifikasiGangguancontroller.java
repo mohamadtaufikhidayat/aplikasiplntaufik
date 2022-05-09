@@ -4,16 +4,11 @@ import com.prodemy.pembayaran.listrik.Repository.DataPelRepo;
 import com.prodemy.pembayaran.listrik.Repository.Gangguanrepo;
 import com.prodemy.pembayaran.listrik.Service.GangguanService;
 import com.prodemy.pembayaran.listrik.model.dto.DefaultResponse;
-import com.prodemy.pembayaran.listrik.model.dto.FormPengaduanDto;
 import com.prodemy.pembayaran.listrik.model.dto.GangguanDto;
-import com.prodemy.pembayaran.listrik.model.dto.PenggunaListrikDto;
-import com.prodemy.pembayaran.listrik.model.entity.FormPengaduan;
 import com.prodemy.pembayaran.listrik.model.entity.Gangguan;
 import com.prodemy.pembayaran.listrik.model.entity.PenggunaListrik;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.security.auth.message.MessageInfo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

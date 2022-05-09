@@ -1,14 +1,14 @@
 package com.prodemy.pembayaran.listrik.controller;
 
+import com.prodemy.pembayaran.listrik.Repository.DataPelRepo;
 import com.prodemy.pembayaran.listrik.Repository.JenisPelangganRepo;
 import com.prodemy.pembayaran.listrik.Repository.PenggunaListrikrepo;
 import com.prodemy.pembayaran.listrik.Repository.Userrepo;
-import com.prodemy.pembayaran.listrik.Repository.DataPelRepo;
 import com.prodemy.pembayaran.listrik.model.dto.DefaultResponse;
 import com.prodemy.pembayaran.listrik.model.dto.PenggunaListrikDto;
 import com.prodemy.pembayaran.listrik.model.entity.JenisPelanggan;
-import com.prodemy.pembayaran.listrik.model.entity.User;
 import com.prodemy.pembayaran.listrik.model.entity.PenggunaListrik;
+import com.prodemy.pembayaran.listrik.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +17,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/home")
+@RequestMapping("/penggunaListrik")
 public class PenggunaListrikcontroller {
 
     @Autowired

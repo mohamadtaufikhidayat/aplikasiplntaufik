@@ -1,4 +1,4 @@
-//package com.prodemy.pembayaran.listrik.model.entity;
+package com.prodemy.pembayaran.listrik.model.entity;//package com.prodemy.pembayaran.listrik.model.entity;
 //
 //import com.fasterxml.jackson.annotation.JsonFormat;
 //

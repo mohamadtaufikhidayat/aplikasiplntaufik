@@ -1,6 +1,5 @@
 package com.prodemy.pembayaran.listrik.Repository;
 
-import com.prodemy.pembayaran.listrik.model.entity.Admin;
 import com.prodemy.pembayaran.listrik.model.entity.PenggunaListrik;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -2,9 +2,7 @@ package com.prodemy.pembayaran.listrik.Service;
 
 import com.prodemy.pembayaran.listrik.Repository.AdminRepo;
 import com.prodemy.pembayaran.listrik.model.dto.AdminDto;
-import com.prodemy.pembayaran.listrik.model.dto.UserDto;
 import com.prodemy.pembayaran.listrik.model.entity.Admin;
-import com.prodemy.pembayaran.listrik.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

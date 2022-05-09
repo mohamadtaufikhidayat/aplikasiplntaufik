@@ -2,11 +2,9 @@ package com.prodemy.pembayaran.listrik.controller;
 
 import com.prodemy.pembayaran.listrik.Repository.CatatMeterRepo;
 import com.prodemy.pembayaran.listrik.Repository.DataPelRepo;
-import com.prodemy.pembayaran.listrik.Repository.Tagihanrepo;
 import com.prodemy.pembayaran.listrik.model.dto.CatatMeterDto;
 import com.prodemy.pembayaran.listrik.model.entity.CatatMeter;
 import com.prodemy.pembayaran.listrik.model.entity.PenggunaListrik;
-import com.prodemy.pembayaran.listrik.model.entity.Tagihan;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

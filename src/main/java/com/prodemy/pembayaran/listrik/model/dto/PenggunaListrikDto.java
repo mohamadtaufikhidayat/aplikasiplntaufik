@@ -1,7 +1,5 @@
 package com.prodemy.pembayaran.listrik.model.dto;
 
-import javax.persistence.Column;
-
 public class PenggunaListrikDto {
     private Long idPengguna;
     private String namaPengguna;

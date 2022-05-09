@@ -14,7 +14,7 @@ public class TransaksiDto {
     private Long biaya;
     private Long kwh;
     private String status;
-    private Long kwhxiduser;
+//    private Long kwhxiduser;
     private String metodePembayaran;
     private Long noRekeningPLN;
 //    private Date tanggal;
@@ -108,27 +108,27 @@ public class TransaksiDto {
         this.status = status;
     }
 
-    public String getMetodePembayaran() {
-        return metodePembayaran;
-    }
+//    public String getMetodePembayaran() {
+//        return metodePembayaran;
+//    }
+//
+//    public void setMetodePembayaran(String metodePembayaran) {
+//        this.metodePembayaran = metodePembayaran;
+//    }
+//
+//    public Long getNoRekeningPLN() {
+//        return noRekeningPLN;
+//    }
+//
+//    public void setNoRekeningPLN(Long noRekeningPLN) {
+//        this.noRekeningPLN = noRekeningPLN;
+//    }
 
-    public void setMetodePembayaran(String metodePembayaran) {
-        this.metodePembayaran = metodePembayaran;
-    }
-
-    public Long getNoRekeningPLN() {
-        return noRekeningPLN;
-    }
-
-    public void setNoRekeningPLN(Long noRekeningPLN) {
-        this.noRekeningPLN = noRekeningPLN;
-    }
-
-    public Long getKwhxiduser() {
-        return kwhxiduser;
-    }
-
-    public void setKwhxiduser(Long kwhxiduser) {
-        this.kwhxiduser = kwhxiduser;
-    }
+//    public Long getKwhxiduser() {
+//        return kwhxiduser;
+//    }
+//
+//    public void setKwhxiduser(Long kwhxiduser) {
+//        this.kwhxiduser = kwhxiduser;
+//    }
 }

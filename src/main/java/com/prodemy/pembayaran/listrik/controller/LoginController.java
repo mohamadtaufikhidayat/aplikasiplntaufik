@@ -4,15 +4,12 @@ import com.prodemy.pembayaran.listrik.Repository.LoginRepo;
 import com.prodemy.pembayaran.listrik.Repository.Userrepo;
 import com.prodemy.pembayaran.listrik.model.dto.DefaultResponse;
 import com.prodemy.pembayaran.listrik.model.dto.LoginDto;
-import com.prodemy.pembayaran.listrik.model.dto.PenggunaListrikDto;
 import com.prodemy.pembayaran.listrik.model.dto.UserDto;
-import com.prodemy.pembayaran.listrik.model.entity.PenggunaListrik;
-import com.prodemy.pembayaran.listrik.model.entity.User;
 import com.prodemy.pembayaran.listrik.model.entity.Login;
+import com.prodemy.pembayaran.listrik.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

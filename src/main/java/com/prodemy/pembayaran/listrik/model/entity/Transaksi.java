@@ -34,9 +34,9 @@ public class Transaksi {
     @ManyToOne
     @JoinColumn(name="IdNoPelanggan")
     private Pelanggan idNoPelanggan;
-    @ManyToOne
-    @JoinColumn(name="metodePembayaran")
-    private MetodePembayaran metodePembayaran;
+//    @ManyToOne
+//    @JoinColumn(name="metodePembayaran")
+//    private MetodePembayaran metodePembayaran;
 //    @Column
 //    private Date tanggal;
 //    @Column
@@ -74,13 +74,13 @@ public class Transaksi {
         this.idNoPelanggan = idNoPelanggan;
     }
 
-    public MetodePembayaran getMetodePembayaran() {
-        return metodePembayaran;
-    }
+//    public MetodePembayaran getMetodePembayaran() {
+//        return metodePembayaran;
+//    }
 
-    public void setMetodePembayaran(MetodePembayaran metodePembayaran) {
-        this.metodePembayaran = metodePembayaran;
-    }
+//    public void setMetodePembayaran(MetodePembayaran metodePembayaran) {
+//        this.metodePembayaran = metodePembayaran;
+//    }
     //        return tanggal;
 //    }
 //

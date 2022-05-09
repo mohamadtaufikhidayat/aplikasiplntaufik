@@ -9,12 +9,12 @@ import com.prodemy.pembayaran.listrik.model.dto.UserDto;
 import com.prodemy.pembayaran.listrik.model.entity.Admin;
 import com.prodemy.pembayaran.listrik.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-
 
 
 @RestController
@@ -41,10 +41,13 @@ public class Usercontroller {
                 respon.setPesan("Register Berhasil");
                 respon.setData(dto);
                 service.register(dto);
-                }else {
-                respon.setPesan("No Aplikasi Tidak Ditemukan");}
-            }else{
+            }else {
+                respon.setData(dto);
+                respon.setPesan("No Aplikasi Tidak Ditemukan");
+                service.register(dto);
+            }
+        }else{
             respon.setPesan("Register Gagal Email Sudah Terdaftar");}
-            return respon;
+        return respon;
         }
 }

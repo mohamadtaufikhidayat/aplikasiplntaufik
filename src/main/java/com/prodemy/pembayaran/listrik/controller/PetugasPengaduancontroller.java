@@ -2,17 +2,14 @@ package com.prodemy.pembayaran.listrik.controller;
 
 import com.prodemy.pembayaran.listrik.Repository.*;
 import com.prodemy.pembayaran.listrik.Service.PengaduanService;
-import com.prodemy.pembayaran.listrik.model.dto.AssignmentDto;
 import com.prodemy.pembayaran.listrik.model.dto.DefaultResponse;
 import com.prodemy.pembayaran.listrik.model.dto.FormPengaduanDto;
 import com.prodemy.pembayaran.listrik.model.dto.PetugasPengaduanDto;
-import com.prodemy.pembayaran.listrik.model.entity.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.prodemy.pembayaran.listrik.model.entity.FormPengaduan;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/petugas-pengaduan")

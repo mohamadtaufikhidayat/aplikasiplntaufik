@@ -190,8 +190,8 @@ public class Transaksicontroller {
         transaksiDto.setDaya(transaksi.getNoTagihan().getIdPenggunaListrik().getIdJenis().getDaya());
         transaksiDto.setKwh(transaksi.getNoTagihan().getKwh());
         transaksiDto.setStatus(transaksi.getNoTagihan().getStatus());
-        transaksiDto.setMetodePembayaran(transaksi.getMetodePembayaran().getMetodeBayar());
-        transaksiDto.setNoRekeningPLN(transaksi.getMetodePembayaran().getNoRekPLN());
+//        transaksiDto.setMetodePembayaran(transaksi.getMetodePembayaran().getMetodeBayar());
+//        transaksiDto.setNoRekeningPLN(transaksi.getMetodePembayaran().getNoRekPLN());
         return transaksiDto;
     }
 }

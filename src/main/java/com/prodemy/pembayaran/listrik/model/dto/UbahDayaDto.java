@@ -9,7 +9,7 @@ public class UbahDayaDto {
     private String jenisPengguna;
     private String daya;
     private String jenisPenggunaubah;
-    private Long dayaBaru;
+    private String dayaBaru;
     private String kontak;
     private String status;
 
@@ -69,11 +69,11 @@ public class UbahDayaDto {
         this.jenisPenggunaubah = jenisPenggunaubah;
     }
 
-    public Long getDayaBaru() {
+    public String getDayaBaru() {
         return dayaBaru;
     }
 
-    public void setDayaBaru(Long dayaBaru) {
+    public void setDayaBaru(String dayaBaru) {
         this.dayaBaru = dayaBaru;
     }
 

@@ -1,7 +1,5 @@
 package com.prodemy.pembayaran.listrik.model.dto;
 
-import java.util.Date;
-
 public class TagihanDto {
     private Long noTagihan;
     private Long noUrut;
