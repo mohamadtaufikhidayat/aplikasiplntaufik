@@ -1,24 +1,24 @@
 package com.prodemy.pembayaran.listrik.model.dto;
 
+import javax.persistence.Column;
+
 public class TransaksiDto {
     private Long noTransaksi;
     private Long noTagihan;
     private Long idNoPelanggan;
-    //    private String idPenggunaListrik;
     private Long idUser;
     private Long idPenggunaListrik;
-    //    private Date tanggal;
     private String namaPenggunaListrik;
     private String daya;
     private String bulan;
-    private Long biaya;
     private Long kwh;
-    private String status;
-//    private Long kwhxiduser;
     private String metodePembayaran;
-    private Long noRekeningPLN;
-//    private Date tanggal;
-//    private Long biaya;
+    private String konfirmasiMetodePembayaran;
+    private Long noRekPLN;
+    private Long konfirmasirekeningpln;
+    private Long biaya;
+    private Long konfirmasiBiaya;
+    private String statusTransaksi;
 
     public Long getNoTransaksi() {
         return noTransaksi;
@@ -84,14 +84,6 @@ public class TransaksiDto {
         this.bulan = bulan;
     }
 
-    public Long getBiaya() {
-        return biaya;
-    }
-
-    public void setBiaya(Long biaya) {
-        this.biaya = biaya;
-    }
-
     public Long getKwh() {
         return kwh;
     }
@@ -100,35 +92,59 @@ public class TransaksiDto {
         this.kwh = kwh;
     }
 
-    public String getStatus() {
-        return status;
+    public String getMetodePembayaran() {
+        return metodePembayaran;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setMetodePembayaran(String metodePembayaran) {
+        this.metodePembayaran = metodePembayaran;
     }
 
-//    public String getMetodePembayaran() {
-//        return metodePembayaran;
-//    }
-//
-//    public void setMetodePembayaran(String metodePembayaran) {
-//        this.metodePembayaran = metodePembayaran;
-//    }
-//
-//    public Long getNoRekeningPLN() {
-//        return noRekeningPLN;
-//    }
-//
-//    public void setNoRekeningPLN(Long noRekeningPLN) {
-//        this.noRekeningPLN = noRekeningPLN;
-//    }
+    public String getKonfirmasiMetodePembayaran() {
+        return konfirmasiMetodePembayaran;
+    }
 
-//    public Long getKwhxiduser() {
-//        return kwhxiduser;
-//    }
-//
-//    public void setKwhxiduser(Long kwhxiduser) {
-//        this.kwhxiduser = kwhxiduser;
-//    }
+    public void setKonfirmasiMetodePembayaran(String konfirmasiMetodePembayaran) {
+        this.konfirmasiMetodePembayaran = konfirmasiMetodePembayaran;
+    }
+
+    public Long getNoRekPLN() {
+        return noRekPLN;
+    }
+
+    public void setNoRekPLN(Long noRekPLN) {
+        this.noRekPLN = noRekPLN;
+    }
+
+    public Long getKonfirmasirekeningpln() {
+        return konfirmasirekeningpln;
+    }
+
+    public void setKonfirmasirekeningpln(Long konfirmasirekeningpln) {
+        this.konfirmasirekeningpln = konfirmasirekeningpln;
+    }
+
+    public Long getBiaya() {
+        return biaya;
+    }
+
+    public void setBiaya(Long biaya) {
+        this.biaya = biaya;
+    }
+
+    public Long getKonfirmasiBiaya() {
+        return konfirmasiBiaya;
+    }
+
+    public void setKonfirmasiBiaya(Long konfirmasiBiaya) {
+        this.konfirmasiBiaya = konfirmasiBiaya;
+    }
+
+    public String getStatusTransaksi() {
+        return statusTransaksi;
+    }
+
+    public void setStatusTransaksi(String statusTransaksi) {
+        this.statusTransaksi = statusTransaksi;
+    }
 }

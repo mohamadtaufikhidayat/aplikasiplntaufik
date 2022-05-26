@@ -25,7 +25,7 @@ public class PenggunaListrikcontroller {
     PenggunaListrikrepo repo;
 
     DataPelRepo repo1;
-
+    @Autowired
     JenisPelangganRepo jenisPelangganRepo;
     @Autowired
     Userrepo userrepo;

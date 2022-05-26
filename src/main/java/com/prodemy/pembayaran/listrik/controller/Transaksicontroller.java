@@ -1,11 +1,9 @@
 package com.prodemy.pembayaran.listrik.controller;
 
 
-import com.prodemy.pembayaran.listrik.Repository.Pelangganrepo;
-import com.prodemy.pembayaran.listrik.Repository.Tagihanrepo;
-import com.prodemy.pembayaran.listrik.Repository.Transaksirepo;
-import com.prodemy.pembayaran.listrik.Repository.Userrepo;
+import com.prodemy.pembayaran.listrik.Repository.*;
 import com.prodemy.pembayaran.listrik.Service.TransaksiService;
+import com.prodemy.pembayaran.listrik.model.dto.DefaultResponse;
 import com.prodemy.pembayaran.listrik.model.dto.TransaksiDto;
 import com.prodemy.pembayaran.listrik.model.entity.Transaksi;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +20,8 @@ public class Transaksicontroller {
     final private Tagihanrepo tagihanrepo;
     final private Pelangganrepo pelangganrepo;
     @Autowired
+    private MetodePembayaranrepo metodePembayaranrepo;
+    @Autowired
     private TransaksiService transaksiService;
 
     public Transaksicontroller(Transaksirepo transaksirepo, Userrepo userrepo, Tagihanrepo tagihanrepo,Pelangganrepo pelangganrepo) {
@@ -32,10 +32,31 @@ public class Transaksicontroller {
     }
 
     @PostMapping("/save")
-    public TransaksiDto saveTry(@RequestBody TransaksiDto transaksiDto){
+    public DefaultResponse<TransaksiDto> saveTry(@RequestBody TransaksiDto transaksiDto){
+        DefaultResponse<TransaksiDto>response=new DefaultResponse<>();
         Transaksi transaksi=conversiDtoToEntity(transaksiDto);
-        transaksirepo.save(transaksi);
-        return conversiEntityToDto(transaksi);
+        if(tagihanrepo.findById(transaksiDto.getNoTagihan()).isPresent()){
+            Transaksi entity = transaksirepo.save(conversiDtoToEntity(transaksiDto));
+            entity.setKonfirmasiMetodePembayaran(transaksi.getKonfirmasiMetodePembayaran());
+            entity.setBiaya(transaksi.getNoTagihan().getBiaya());
+            entity.setKonfirmasiBiaya(transaksi.getKonfirmasiBiaya());
+            entity.setNoRekPLN(transaksi.getMetodePembayaran().getNoRekPLN());
+            entity.setKonfirmasirekeningpln(transaksi.getKonfirmasirekeningpln());
+            if(String.valueOf(entity.getNoTagihan().getBiaya()).equals(String.valueOf(entity.getKonfirmasiBiaya()))&&entity.getMetodePembayaran().getMetodeBayar().equals(entity.getKonfirmasiMetodePembayaran())&&String.valueOf(entity.getMetodePembayaran().getNoRekPLN()).equals(String.valueOf(entity.getKonfirmasirekeningpln()))){
+                entity.setStatusTransaksi("transaksi berhasil");
+                transaksirepo.save(entity);
+                response.setPesan("transaksi berhasil");
+                response.setData(conversiEntityToDto(entity));
+            }else{
+                entity.setStatusTransaksi("transaksi gagal");
+                transaksirepo.save(entity);
+                response.setPesan("transaksi gagal perikasa dan cocokan metode pembayaran, noRekPLN dan Biaya");
+                response.setData(conversiEntityToDto(entity));
+            }
+        }else{
+            response.setPesan("tagihan tidak ada");
+        }
+        return response;
     }
     @PostMapping("/savetrx")
     public TransaksiDto saveTryTrx(@RequestBody TransaksiDto transaksiDto){
@@ -166,7 +187,6 @@ public class Transaksicontroller {
     }
     public Transaksi conversiDtoToEntity(TransaksiDto transaksiDto){
         Transaksi transaksi = new Transaksi();
-
         transaksi.setNoTransaksi(transaksiDto.getNoTransaksi());
         if(pelangganrepo.findById(transaksiDto.getIdNoPelanggan()).isPresent()){
             transaksi.setIdNoPelanggan(pelangganrepo.findById(transaksiDto.getIdNoPelanggan()).get());
@@ -174,7 +194,15 @@ public class Transaksicontroller {
         if(tagihanrepo.findById(transaksiDto.getNoTagihan()).isPresent()){
             transaksi.setNoTagihan(tagihanrepo.findById(transaksiDto.getNoTagihan()).get());
         }
-
+        if(metodePembayaranrepo.findById(transaksiDto.getMetodePembayaran()).isPresent()){
+            transaksi.setMetodePembayaran(metodePembayaranrepo.findById(transaksiDto.getMetodePembayaran()).get());
+        }
+        transaksi.setBiaya(transaksiDto.getBiaya());
+        transaksi.setKonfirmasiBiaya(transaksiDto.getKonfirmasiBiaya());
+        transaksi.setNoRekPLN(transaksiDto.getNoRekPLN());
+        transaksi.setKonfirmasirekeningpln(transaksiDto.getKonfirmasirekeningpln());
+        transaksi.setKonfirmasiMetodePembayaran(transaksiDto.getKonfirmasiMetodePembayaran());
+        transaksi.setStatusTransaksi(transaksiDto.getStatusTransaksi());
         return transaksi;
     }
     public TransaksiDto conversiEntityToDto(Transaksi transaksi){
@@ -189,9 +217,13 @@ public class Transaksicontroller {
         transaksiDto.setNamaPenggunaListrik(transaksi.getNoTagihan().getIdPenggunaListrik().getNamaPengguna());
         transaksiDto.setDaya(transaksi.getNoTagihan().getIdPenggunaListrik().getIdJenis().getDaya());
         transaksiDto.setKwh(transaksi.getNoTagihan().getKwh());
-        transaksiDto.setStatus(transaksi.getNoTagihan().getStatus());
-//        transaksiDto.setMetodePembayaran(transaksi.getMetodePembayaran().getMetodeBayar());
-//        transaksiDto.setNoRekeningPLN(transaksi.getMetodePembayaran().getNoRekPLN());
+        transaksiDto.setMetodePembayaran(transaksi.getMetodePembayaran().getMetodeBayar());
+        transaksiDto.setKonfirmasiMetodePembayaran(transaksi.getKonfirmasiMetodePembayaran());
+        transaksiDto.setNoRekPLN(transaksi.getMetodePembayaran().getNoRekPLN());
+        transaksiDto.setKonfirmasirekeningpln(transaksi.getKonfirmasirekeningpln());
+        transaksiDto.setBiaya(transaksi.getNoTagihan().getBiaya());
+        transaksiDto.setKonfirmasiBiaya(transaksi.getBiaya());
+        transaksiDto.setStatusTransaksi(transaksi.getStatusTransaksi());
         return transaksiDto;
     }
 }

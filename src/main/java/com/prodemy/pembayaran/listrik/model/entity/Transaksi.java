@@ -34,13 +34,21 @@ public class Transaksi {
     @ManyToOne
     @JoinColumn(name="IdNoPelanggan")
     private Pelanggan idNoPelanggan;
-//    @ManyToOne
-//    @JoinColumn(name="metodePembayaran")
-//    private MetodePembayaran metodePembayaran;
-//    @Column
-//    private Date tanggal;
-//    @Column
-//    private Long biaya;
+    @ManyToOne
+    @JoinColumn(name="metodePembayaran")
+    private MetodePembayaran metodePembayaran;
+    @Column
+    private String konfirmasiMetodePembayaran;
+    @Column
+    private Long noRekPLN;
+    @Column
+    private Long konfirmasirekeningpln;
+    @Column
+    private Long biaya;
+    @Column
+    private Long konfirmasiBiaya;
+    @Column
+    private String statusTransaksi;
 
     public Long getNoTransaksi() {
         return noTransaksi;
@@ -58,14 +66,6 @@ public class Transaksi {
         this.noTagihan = noTagihan;
     }
 
-//    public PenggunaListrik getIdPenggunaListrik() {
-//        return idPenggunaListrik;
-//    }
-//
-//    public void setIdPenggunaListrik(PenggunaListrik idPenggunaListrik) {
-//        this.idPenggunaListrik = idPenggunaListrik;
-//    }
-
     public Pelanggan getIdNoPelanggan() {
         return idNoPelanggan;
     }
@@ -74,25 +74,59 @@ public class Transaksi {
         this.idNoPelanggan = idNoPelanggan;
     }
 
-//    public MetodePembayaran getMetodePembayaran() {
-//        return metodePembayaran;
-//    }
+    public MetodePembayaran getMetodePembayaran() {
+        return metodePembayaran;
+    }
 
-//    public void setMetodePembayaran(MetodePembayaran metodePembayaran) {
-//        this.metodePembayaran = metodePembayaran;
-//    }
-    //        return tanggal;
-//    }
-//
-//    public void setTanggal(Date tanggal) {
-//        this.tanggal = tanggal;
-//    }
-//
-//    public Long getBiaya() {
-//        return biaya;
-//    }
-//
-//    public void setBiaya(Long biaya) {
-//        this.biaya = biaya;
-//    }
+    public void setMetodePembayaran(MetodePembayaran metodePembayaran) {
+        this.metodePembayaran = metodePembayaran;
+    }
+
+    public String getKonfirmasiMetodePembayaran() {
+        return konfirmasiMetodePembayaran;
+    }
+
+    public void setKonfirmasiMetodePembayaran(String konfirmasiMetodePembayaran) {
+        this.konfirmasiMetodePembayaran = konfirmasiMetodePembayaran;
+    }
+
+    public Long getNoRekPLN() {
+        return noRekPLN;
+    }
+
+    public void setNoRekPLN(Long noRekPLN) {
+        this.noRekPLN = noRekPLN;
+    }
+
+    public Long getKonfirmasirekeningpln() {
+        return konfirmasirekeningpln;
+    }
+
+    public void setKonfirmasirekeningpln(Long konfirmasirekeningpln) {
+        this.konfirmasirekeningpln = konfirmasirekeningpln;
+    }
+
+    public Long getBiaya() {
+        return biaya;
+    }
+
+    public void setBiaya(Long biaya) {
+        this.biaya = biaya;
+    }
+
+    public Long getKonfirmasiBiaya() {
+        return konfirmasiBiaya;
+    }
+
+    public void setKonfirmasiBiaya(Long konfirmasiBiaya) {
+        this.konfirmasiBiaya = konfirmasiBiaya;
+    }
+
+    public String getStatusTransaksi() {
+        return statusTransaksi;
+    }
+
+    public void setStatusTransaksi(String statusTransaksi) {
+        this.statusTransaksi = statusTransaksi;
+    }
 }
